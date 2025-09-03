@@ -43,7 +43,7 @@ const LocationSearch = ({ onSearch }) => {
           </div>
           
           <Select value={category} onValueChange={setCategory}>
-            <SelectTrigger className="search-input h-12 w-full md:w-[200px]">
+            <SelectTrigger className="border-1 border-gray-400 h-12 w-full md:w-[200px]">
               <SelectValue placeholder="Category" />
             </SelectTrigger>
             <SelectContent className="bg-white/95 backdrop-blur-lg border border-white/20">
@@ -98,10 +98,10 @@ const LocationSearch = ({ onSearch }) => {
               <div>
                 <label className="block text-sm font-medium mb-2">Distance</label>
                 <Select value={distance} onValueChange={setDistance}>
-                  <SelectTrigger>
+                  <SelectTrigger  className="border-1 border-gray-400">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-white border-0">
                     <SelectItem value="1">Within 1 km</SelectItem>
                     <SelectItem value="5">Within 5 km</SelectItem>
                     <SelectItem value="10">Within 10 km</SelectItem>
@@ -113,10 +113,10 @@ const LocationSearch = ({ onSearch }) => {
               <div>
                 <label className="block text-sm font-medium mb-2">Rating</label>
                 <Select>
-                  <SelectTrigger>
+                  <SelectTrigger  className="border-1 border-gray-400">
                     <SelectValue placeholder="Any rating" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-white border-0">
                     <SelectItem value="4">4+ stars</SelectItem>
                     <SelectItem value="3">3+ stars</SelectItem>
                     <SelectItem value="2">2+ stars</SelectItem>
@@ -127,10 +127,10 @@ const LocationSearch = ({ onSearch }) => {
               <div>
                 <label className="block text-sm font-medium mb-2">Price Range</label>
                 <Select>
-                  <SelectTrigger>
+                  <SelectTrigger className="border-1 border-gray-400">
                     <SelectValue placeholder="Any price" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-white border-0">
                     <SelectItem value="$">$ - Budget</SelectItem>
                     <SelectItem value="$$">$$ - Moderate</SelectItem>
                     <SelectItem value="$$$">$$$ - Expensive</SelectItem>

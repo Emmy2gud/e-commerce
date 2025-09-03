@@ -61,7 +61,7 @@ const SellerCard = ({ seller }) => {
             <h3 className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">
               {seller.name}
             </h3>
-            <span className="text-sm font-medium text-primary">{seller.priceRange}</span>
+        
           </div>
           
           <div className="flex items-center gap-2">
@@ -75,7 +75,7 @@ const SellerCard = ({ seller }) => {
 
         {/* Category & Distance */}
         <div className="flex items-center justify-between text-sm">
-          <Badge variant="outline" className="text-xs">
+          <Badge variant="outline" className="text-xs border-0 bg-amber-500 text-white">
             {seller.category}
           </Badge>
           <div className="flex items-center text-muted-foreground">
@@ -107,7 +107,7 @@ const SellerCard = ({ seller }) => {
         <div className="flex gap-2 pt-2">
           <Button 
             size="sm" 
-            className="btn-gradient-primary flex-1"
+            className="bg-gradient-to-br from-purple-600 to-blue-600 text-white flex-1"
             onClick={(e) => e.stopPropagation()}
           >
             <Phone className="mr-2 h-4 w-4" />
@@ -117,7 +117,7 @@ const SellerCard = ({ seller }) => {
             <Button 
               size="sm" 
               variant="outline" 
-              className="flex-1"
+              className="flex-1 border-1 border-gray-400"
               onClick={(e) => e.stopPropagation()}
             >
               <Globe className="mr-2 h-4 w-4" />
@@ -127,7 +127,7 @@ const SellerCard = ({ seller }) => {
         </div>
 
         {/* Address */}
-        <div className="flex items-start gap-2 pt-2 border-t border-border/50">
+        <div className="flex items-start gap-2 pt-2 border-t border-gray-400/50">
           <MapPin className="h-4 w-4 text-muted-foreground mt-0.5 flex-shrink-0" />
           <span className="text-sm text-muted-foreground leading-relaxed">
             {seller.address}

@@ -103,7 +103,7 @@ const NearbyUser= () => {
         
         <div className="relative container mx-auto px-4 py-20 text-center">
           <div className="max-w-4xl mx-auto space-y-8">
-            {/* Header */}
+         
             <div className="space-y-4 animate-fade-in">
               <div className="flex items-center justify-center gap-2 mb-4">
                 <Sparkles className="h-8 w-8 text-white animate-float" />
@@ -120,7 +120,7 @@ const NearbyUser= () => {
               </p>
             </div>
 
-            {/* Stats */}
+          
             <div className="flex flex-wrap items-center justify-center gap-8 text-white/80 animate-fade-in">
               <div className="flex items-center gap-2">
                 <Users className="h-5 w-5" />
@@ -139,7 +139,7 @@ const NearbyUser= () => {
         </div>
       </section>
 
-      {/* Search Section */}
+ 
       <section className="container mx-auto px-4 -mt-16 relative z-10">
         <LocationSearch onSearch={handleSearch} />
       </section>
@@ -208,7 +208,7 @@ const NearbyUser= () => {
           <h2 className="text-3xl font-bold text-foreground mb-4">Popular Categories</h2>
           <p className="text-muted-foreground">Discover businesses across various categories</p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 ">
           {[
             { name: "Restaurants", icon: "🍽️", count: "1,200+" },
             { name: "Technology", icon: "💻", count: "450+" },
@@ -217,7 +217,7 @@ const NearbyUser= () => {
             { name: "Beauty", icon: "💄", count: "320+" },
             { name: "Services", icon: "🔧", count: "750+" }
           ].map((category) => (
-            <div key={category.name} className="glass-card p-6 rounded-2xl text-center hover-scale cursor-pointer">
+            <div key={category.name} className="glass-card p-6 rounded-2xl text-center hover-scale cursor-pointer bg-white">
               <div className="text-4xl mb-3">{category.icon}</div>
               <h3 className="font-semibold text-foreground mb-1">{category.name}</h3>
               <p className="text-sm text-muted-foreground">{category.count}</p>

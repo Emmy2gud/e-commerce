@@ -222,12 +222,12 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Main Navbar */}
+     
         <header className="sticky top-0 z-50 w-full border-b border-gray-300  bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
           <div className="px-2 mx-auto">
-            {/* Top Row */}
+          
             <div className="flex h-16 items-center justify-between  w-full">
-              {/* Logo */}
+           
               <Link href="/" className="flex items-center space-x-2">
                 <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center">
                   <span className="text-white font-bold text-xl">S</span>
@@ -244,7 +244,7 @@ const Navbar = () => {
                   <Input
                     type="search"
                     placeholder="Search for products, brands and more..."
-                    className="pl-10 pr-4 h-12 w-full rounded-full border-2 border-gray-200 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-200"
+                    className="pl-10 pr-4 text-sm font-medium h-12 w-full rounded-full border-2 border-gray-200 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-200"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
@@ -272,7 +272,7 @@ const Navbar = () => {
                   className="relative"
                   asChild
                 >
-                  <Link href="/cart">
+                  <Link to="/cart">
                     <ShoppingCart className="h-5 w-5" />
                     {cartCount > 0 && (
                       <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs bg-purple-600 text-white">
@@ -282,7 +282,7 @@ const Navbar = () => {
                   </Link>
                 </Button>
 
-                {/* User Account */} {isLoggedIn ? (
+              {isLoggedIn ? (
                   <DropdownMenu >
                     <DropdownMenuTrigger asChild>
                       <Button
@@ -307,19 +307,19 @@ const Navbar = () => {
                         </Link>
                       </DropdownMenuItem>
                       <DropdownMenuItem asChild>
-                        <Link href="/orders" className="flex items-center">
+                        <Link to="/orders" className="flex items-center">
                           <Package className="mr-2 h-4 w-4" />
                           Orders
                         </Link>
                       </DropdownMenuItem>
                       <DropdownMenuItem asChild>
-                        <Link href="/wishlist" className="flex items-center">
+                        <Link to="/wishlist" className="flex items-center">
                           <Heart className="mr-2 h-4 w-4" />
                           Wishlist
                         </Link>
                       </DropdownMenuItem>
                       <DropdownMenuItem asChild>
-                        <Link href="/settings" className="flex items-center">
+                        <Link to="/settings" className="flex items-center">
                           <Settings className="mr-2 h-4 w-4" />
                           Settings
                         </Link>
@@ -334,10 +334,10 @@ const Navbar = () => {
                 ) : (
                   <div className="flex items-center space-x-2">
                     <Button variant="ghost" asChild>
-                      <Link href="/login">Login</Link>
+                      <Link to="/login">Login</Link>
                     </Button>
                     <Button className="bg-gradient-to-br from-purple-600 to-blue-600 text-white" asChild>
-                      <Link href="/signup">Sign Up</Link>
+                      <Link to="/signup">Sign Up</Link>
                     </Button>
                   </div>
                 )}

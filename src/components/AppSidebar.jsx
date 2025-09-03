@@ -168,7 +168,7 @@ export function AppSidebar() {
   }
 
   return (
-         <Sidebar className=" bg-white shadow-lg w-62 h-screen  border-r border-gray-100 flex flex-col ">
+         <Sidebar className=" bg-white shadow-lg w-67 h-screen  border-r border-gray-100 flex flex-col ">
         <SidebarHeader className>
           <SidebarMenu >
             <SidebarMenuItem className="p-6 border-b border-gray-100 bg-gradient-to-r from-purple-50 to-blue-50">
@@ -184,7 +184,7 @@ export function AppSidebar() {
                           <span className="font-bold text-2xl bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
                             ShopHub
                           </span>
-                          {/* <span className="text-sm text-gray-500 mt-1">Admin Panel</span> */}
+                         
                         </div>
                       </Link>
                     </span>

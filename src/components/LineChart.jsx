@@ -37,7 +37,7 @@ const chartConfig = {
 
 export function LineChart() {
   return (
-    <Card className="p-16 border-0 shadow shadow-gray-400   h-85">
+    <Card className="p-16 border-0 shadow shadow-gray-400 min-w-[300px] min-h-[200px] backdrop-blur-sm bg-white mx-5" >
       <CardHeader>
         <CardTitle>Bar Chart</CardTitle>
         <CardDescription>January - June 2024</CardDescription>

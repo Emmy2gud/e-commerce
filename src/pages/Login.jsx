@@ -36,10 +36,10 @@ export default function Login() {
                   <div className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl"></div>
                 </div>
                 <h2 className="text-4xl font-bold mb-4 leading-tight">
-                  Start your
+                  Start Shopping
                   <br />
                   <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
-                    journey today
+                    Today!
                   </span>
                 </h2>
                 <p className="text-lg text-purple-100 leading-relaxed max-w-md mx-auto">

@@ -16,10 +16,10 @@ export function PaginationDemo() {
           <PaginationPrevious href="#" />
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink href="#">1</PaginationLink>
+          <PaginationLink href="#" >1</PaginationLink>
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink href="#" isActive>
+          <PaginationLink href="#" isActive className="bg-violet-600 text-white hover:bg-violet-700">
             2
           </PaginationLink>
         </PaginationItem>

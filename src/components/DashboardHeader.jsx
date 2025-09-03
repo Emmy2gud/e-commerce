@@ -1,4 +1,4 @@
-import { Search, Bell, User, Menu } from "lucide-react";
+import { Search, Bell, User, Menu, Settings, LogOut } from "lucide-react";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,15 +14,15 @@ import {
 
 export default function DashboardHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-gray-300 bg-background/80 backdrop-blur-lg ">
-      <div className="flex h-16 items-center gap-4 px-6 bg-white ">
+    <header className="sticky top-0 z-40 border-b border-gray-300   backdrop-blur-lg ">
+      <div className="flex h-16 items-center gap-4 px-6 bg-white w-full">
 
   
         <div className="relative flex-1 max-w-md ">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
           <Input
             
-            className="pl-10 border-1 border-gray-300  focus:bg-white w-98 focus-visible:border-1 focus-visible:border-violet-600 shadow-sm focus-visible:ring-0"
+            className="pl-10 border-1 border-gray-300  focus:bg-white w-100 focus-visible:border-1 focus-visible:border-violet-600 shadow-sm focus-visible:ring-0"
           />
         </div>
 
@@ -37,8 +37,8 @@ export default function DashboardHeader() {
           </Button>
 
           {/* User Menu */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
+          <DropdownMenu >
+            <DropdownMenuTrigger asChild >
               <Button variant="ghost" className="relative h-10 w-10 rounded-full bg-violet-600 border-0 ">
                 <Avatar className="h-10 w-10 ">
                   <AvatarImage src="/placeholder.svg" alt="Admin" />
@@ -48,25 +48,20 @@ export default function DashboardHeader() {
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56" align="end" forceMount>
-              <DropdownMenuLabel className="font-normal">
-                <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-none">Admin User</p>
-                  <p className="text-xs leading-none text-muted-foreground">
-                    admin@vendorhub.com
-                  </p>
-                </div>
-              </DropdownMenuLabel>
+            <DropdownMenuContent className="w-56 bg-white border-0" align="end" forceMount>
+          
               <DropdownMenuSeparator />
               <DropdownMenuItem>
-                <User className="mr-2 h-4 w-4" />
+                <User className=" h-4 w-4" />
                 <span>Profile</span>
               </DropdownMenuItem>
               <DropdownMenuItem>
+                <Settings className=" h-4 w-4" />
                 <span>Settings</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem className="text-destructive">
+                <LogOut className=" h-4 w-4" />
                 Log out
               </DropdownMenuItem>
             </DropdownMenuContent>
