@@ -13,6 +13,7 @@ import ProductLists from "../../pages/ProductLists";
 import NearbyUser from "../../pages/NearbyUser";
 import ProductDetail from "../../pages/ProductDetail";
 import { Routes, Route, Outlet } from "react-router-dom";
+import VendorStorefront from "../../pages/VendorStorefront";
 
 class AppLayout extends React.Component {
   render() {
@@ -24,7 +25,7 @@ class AppLayout extends React.Component {
           <Route path="/profile" element={<Profile />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<CheckOut />} />
-          <Route path="/vendor" element={<SellerPage />} />
+          <Route path="/vendor" element={<VendorStorefront/>} />
           <Route path="/productlists" element={<ProductLists />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/login" element={<Login />} />

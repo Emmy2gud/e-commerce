@@ -62,7 +62,7 @@ const pieData = [
 
   return (
     <div className="min-h-screen bg-white " >
-      <Header />
+ 
 
       <main className="p-6">
         <div className="max-w-7xl mx-auto">
@@ -78,11 +78,11 @@ const pieData = [
               </TabsList>
 
               <div className="flex items-center space-x-2">
-                <Button variant="outline" size="sm " className="flex items-center border-1 border-gray-300 px-2 py-1 text-black">
+                <Button variant="outline" size="sm " className="flex items-center border-1 hover:bg-violet-600 hover:text-white border-gray-300 px-2 py-1 text-black">
                   <Filter className="h-4 w-4 mr-2" />
                   Filter
                 </Button>
-                <Button variant="outline" size="sm " className="flex items-center border-1 border-gray-300 px-2 py-1 text-black">
+                <Button variant="outline" size="sm " className="flex items-center border-1 hover:bg-violet-600 hover:text-white border-gray-300 px-2 py-1 text-black">
                   Last 7 days
                 </Button>
               </div>

@@ -1,5 +1,5 @@
 import * as React from "react"
-import { ChevronDown, GalleryVerticalEnd } from "lucide-react"
+import { ChevronDown, DollarSign, GalleryVerticalEnd, MessageSquareWarning, ShoppingCart } from "lucide-react"
 
 import {
   Sidebar,
@@ -17,148 +17,140 @@ import {
 import {  Home, ShoppingBag, Users, Settings, Package, BarChart3, Heart, Search } from 'lucide-react';
 import { Link } from "react-router-dom"
 
-// This is sample data.
-const data = {
-  navMain: [
-    {
-      title: "Dashboard",
-      url: "/dashboard",
-       icon: <Home />,
-      items: [], 
-    },
-    {
-      title: "Product ",
-      url: "#",
-      icon: <Package/>,
-      items: [
-        {
-          title: "Add Product",
-          url: "/products/add",
-        
-        },
-        {
-          title: "View Products",
-          url: "/products",
-        
-       
-        },
-        {
-          title: "Product Categories",
-          url: "/products/categories",
-         
-        }
-      ],
-    },
-    {
-      title: "Orders ",
-      url: "#",
-        icon: <ShoppingBag/>,
-      items: [
-        {
-          title: "All Orders",
-          url: "/orders",
-         
-        },
-        {
-          title: "Pending Orders",
-          url: "/orders?status=pending",
-         
-        },
-        {
-          title: "Completed Orders",
-          url: "/orders?status=completed", 
-        
-        },
-        {
-          title: "Returns/Refunds", 
-          url: "/orders/returns",
-        
-        }
-      ],
-    },
-{
-  title: "Store Profile",
-  url: "/store",
-icon: <ShoppingBag/>,
-  items: [
-    {
-      title: "Store Settings", 
-      url: "/store/settings",
-  
-   
-    },
-    {
-      title: "Appearance",
-      url: "/store/appearance",
-       },
-    {
-      title: "Preview Store", 
-      url: "/store/preview",
-     
-    }
-  ]
-},
-    {
-      title: "Analytics",
-      url: "#",
-     icon: <BarChart3/>,
-      items: [
-        {
-          title: "Sales Overview",
-          url: "/earnings",
-         
-        },
-        {
-          title: "Transaction History",
-          url: "/earnings/transactions",
-         
-        },
-        {
-          title: "Payouts", // Vendors need to withdraw earnings
-          url: "/earnings/payouts",
-          icon: "payments"
-        },
-        {
-          title: "Tax Reports", // Important for business
-          url: "/earnings/taxes",
-          
-        }
-      ],
-    },
 
-    {
-      title: "Settings",
-      url: "#",
-       icon: <Settings/>,
-      items: [
-        {
-          title: "Account Settings",
-          url: "/settings/account",
-         
-        },
-        {
-          title: "Notifications",
-          url: "/settings/notifications",
-       
-        },
-        {
-          title: "Security",
-          url: "/settings/security",
-         
-        },
-        {
-          title: "Shipping Methods", 
-          url: "/settings/shipping",
-       
-        }
-      ],
-    }
-  ],
-}
+
+
+
+const adminNav = [
+  {
+    title: "Dashboard",
+    url: "/admin/dashboard",
+    icon: <Home />,
+    items: [],
+  },
+  {
+    title: "Products",
+    url: "#",
+    icon: <Package />,
+    items: [
+      { title: "View All Products", url: "/admin/products" },
+      { title: "Categories", url: "/admin/categories" },
+    ],
+  },
+  {
+    title: "Stores",
+    url: "#",
+    icon: <ShoppingBag />,
+    items: [
+      { title: "All Stores", url: "/admin/stores" },
+      { title: "Store Requests", url: "/admin/stores/requests" },
+    ],
+  },
+  {
+    title: "Finance",
+    url: "#",
+    icon: <DollarSign />,
+    items: [
+      { title: "Transactions", url: "/admin/transactions" },
+      { title: "Payouts", url: "/admin/payouts" },
+      { title: "Earnings (Platform)", url: "/admin/earnings" },
+    ],
+  },
+  {
+    title: "Users",
+    url: "#",
+    icon: <Users />,
+    items: [
+      { title: "All Users", url: "/admin/users" },
+   
+    ],
+  },
+  
+  {
+    title: "Settings",
+    url: "#",
+    icon: <Settings />,
+    items: [
+      { title: "Platform Settings", url: "/admin/settings/platform" },
+
+    ],
+  },
+  {
+    title: "Complaints",
+    url: "/admin/complaints",
+    icon: <MessageSquareWarning />,
+    items: [],
+  },
+];
+
+
+const sellerNav = [
+  {
+    title: "Dashboard",
+    url: "/dashboard",
+    icon: <Home />,
+    items: [],
+  },
+  {
+    title: "Products",
+    url: "#",
+    icon: <Package />,
+    items: [
+      { title: "Add Product", url: "products/add" },
+      { title: "View Products", url: "products/view" },
+      { title: "Product Reviews", url: "products/reviews" },
+      { title: "Inventory", url: "products/inventory" },
+    
+    ],
+  },
+  {
+    title: "Orders",
+    url: "#",
+    icon: <ShoppingBag />,
+    items: [
+      { title: "All Orders", url: "/orders" },
+    ],
+  },
+  {
+    title: "Store Profile",
+    url: "/store",
+    icon: <ShoppingCart/>,
+    items: [
+      { title: "Create Store", url: "/store/create" },
+
+
+    ],
+  },
+  {
+    title: "Sales",
+    url: "#",
+    icon: <DollarSign />,
+    items: [
+      { title: "Transaction History", url: "/sales/transactions" },
+      { title: "Payouts", url: "/sales/payouts" },
+    ],
+  },
+  {
+    title: "Settings",
+    url: "#",
+    icon: <Settings />,
+    items: [
+      { title: "Account Settings", url: "/settings/account" },
+      { title: "Notifications", url: "/settings/notifications" },
+
+
+    ],
+  }
+];
 
 export function AppSidebar() {
 
-  // Track which dropdown is open by title (or index)
+const [role, setRole] = React.useState("seller"); 
+
+const data = {
+  navMain: role === "admin" ? adminNav : sellerNav,
+};
+
   const [openDropdown, setOpenDropdown] = React.useState(null);
 
   function dropdownToggle(e, title) {      
@@ -214,21 +206,50 @@ export function AppSidebar() {
                       >
                         
                         
-                        <a href={item.url} className={`flex flex-col-1 font-semibold  hover:text-white transition-colors text-right duration-300 ${openDropdown === item.title ? 'text-purple-700' : 'text-black'}`}>
-                         <di className="pr-3"> {item.icon}</di> {item.title}     
-                        </a>
+                        <Link to={item.url} className={`flex flex-col-1 font-semibold  hover:text-white transition-colors text-right duration-300 ${openDropdown === item.title ? 'text-purple-700' : 'text-black'}`}>
+                         <di className="pr-3">{item.icon}</di> {item.title}     
+                        </Link>
+                        
                         <ChevronDown
                           className={`w-4 h-4 transition-transform duration-300 ${openDropdown === item.title  ? 'rotate-180 text-purple-600' : 'text-gray-400'}`}
                         />
                        
                       </div>
+                    
                     </SidebarMenuButton>
                   ) : (
-                    <SidebarMenuButton asChild className="bg-gradient-to-r from-purple-600 to-blue-600  p-4  py-5 mb-2 shadow-lg hover:shadow-xl hover:text-white transform  transition-all duration-300">
-                      <Link to={item.url} className="font-semibold text-white hover:text-white transition-colors duration-300">
-                        {item.title}
-                      </Link>
-                    </SidebarMenuButton>
+                    <div>
+
+
+<SidebarMenuButton
+  asChild
+  className={`${
+    item.title === 'Dashboard'
+      ? 'bg-gradient-to-r from-purple-600 to-blue-600 p-4 py-5 mb-2 shadow-lg hover:shadow-xl hover:text-white transform transition-all duration-300'
+      : `
+        flex items-center p-3 rounded-2xl cursor-pointer transition-all duration-300 ease-in-out py-5 border-0
+        ${openDropdown === item.title ? 'hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50' : 'hover:bg-gradient-to-r hover:from-purple-100 hover:to-blue-100'}
+        ${openDropdown === item.title ? 'bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-200' : ''}
+        ${!openDropdown === item.title ? 'hover:transform hover:-translate-y-0.5' : ''}
+      `
+  }`}
+>
+  <Link
+    to={item.url}
+    className={`flex items-center gap-1 font-semibold ${
+      item.title === 'Dashboard'
+        ? 'text-white hover:text-white'
+        : 'text-black hover:text-white transition-colors duration-300'
+    }`}
+  >
+    <span className="flex items-center">{item.icon}</span>
+    <span>{item.title}</span>
+  </Link>
+</SidebarMenuButton>
+
+
+                    </div>
+             
                   )}
                   {openDropdown === item.title && (
                     <SidebarMenuSub className={`

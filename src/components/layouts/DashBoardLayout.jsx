@@ -25,14 +25,17 @@ import TopProducts from "../../components/topProducts";
 import TotalSales from "../../components/TotalSales";
 import { RadialChart } from "../../components/RadialChart";
 import { LineChart } from "../../components/LineChart";
+import { Header } from "../dashboard/Header";
 
 class DashBoardLayout extends React.Component {
   render() {
     return (
+      
       <SidebarProvider className="min-h-screen px-0">
         <AppSidebar />
         <SidebarInset className="">
           <div className="">
+                 <Header />
             <main className="flex-1  bg-gray-100">
               <Outlet />
             </main>

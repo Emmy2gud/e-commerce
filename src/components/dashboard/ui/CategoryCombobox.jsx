@@ -53,7 +53,7 @@ export function CategoryCombobox() {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[120px] justify-between border-1 border-gray-300" 
+          className="w-[120px] font-normal  justify-between border-1 border-gray-300" 
         >
           {value
             ? frameworks.find((framework) => framework.value === value)?.label
@@ -94,3 +94,5 @@ export function CategoryCombobox() {
     </Popover>
   )
 }
+
+export default CategoryCombobox;
