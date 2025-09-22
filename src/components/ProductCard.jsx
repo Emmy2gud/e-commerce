@@ -1,44 +1,45 @@
-import { Star } from "lucide-react";
-import { useState } from "react";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Star } from "lucide-react";
 
-const ProductCard = ({ product, onClick }) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
-
+const ProductCard = ({ product, className = "" }) => {
   return (
-    <div
-      className="group bg-white rounded-2xl p-4 shadow-sm hover:shadow-[var(--shadow-hover)] transition-[var(--transition-smooth)] cursor-pointer animate-fade-in "
-      onClick={() => onClick(product)}
-    >
-      <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 aspect-square mb-3">
-        <img
-          src={product.image}
-          alt={product.name}
-          className={`w-full h-full object-cover group-hover:scale-105 transition-[var(--transition-smooth)] ${
-            imageLoaded ? "opacity-100" : "opacity-0"
-          }`}
-          onLoad={() => setImageLoaded(true)}
-        />
-        {!imageLoaded && (
-          <div className="absolute inset-0 bg-muted/20 animate-pulse" />
-        )}
-        <div className="absolute flex top-3 right-3 bg-white/80 backdrop-blur-sm rounded-full px-2 py-1 text-xs font-medium text-center items-center">
-          <Star className="w-3 h-3 text-amber-300 mr-2" /> {product.rating}
+    <Card className={`group bg-white cursor-pointer hover:shadow-lg transition-shadow border-none shadow-sm shadow-gray-400 min-h-[400px] w-full ${className}`}>
+      <CardContent className="p-4">
+        <div className="relative mb-4">
+          <img
+            src={product.image || "/placeholder.svg"}
+            alt={product.name}
+            className="w-full h-48 object-cover rounded-lg group-hover:scale-105 transition-transform"
+          />
+          {product.badge && (
+            <Badge
+              className={`absolute text-white top-2 left-2 ${
+                product.badge === "Sale"
+                  ? "bg-red-500"
+                  : product.badge === "New" || product.badge === "New Arrival"
+                  ? "bg-green-500"
+                  : product.badge === "Best Seller"
+                  ? "bg-blue-500"
+                  : product.badge === "Popular"
+                  ? "bg-orange-500"
+                  : product.badge === "Trending"
+                  ? "bg-pink-500"
+                  : product.badge === "Gaming"
+                  ? "bg-indigo-500"
+                  : product.badge === "Eco-Friendly"
+                  ? "bg-emerald-500"
+                  : "bg-blue-500"
+              }`}
+            >
+              {product.badge}
+            </Badge>
+          )}
         </div>
-        {product.originalPrice && (
-          <div className="absolute top-3 left-3 bg-violet-500 text-white rounded-full px-2 py-1 text-xs font-medium">
-            Sale
-          </div>
-        )}
-      </div>
-
-      <div className="space-y-2">
-        <div>
-          <h3 className="font-semibold text-black/80 text-sm line-clamp-2 group-hover:text-primary transition-colors">
-            {product.name}
-          </h3>
-          <p className="text-xs text-gray-500 mt-1">{product.brand}</p>
-        </div>
+        <h3 className="font-semibold text-gray-900 mb-2 text-base line-clamp-2">
+          {product.name}
+        </h3>
         <div className="flex items-center mb-3">
           <div className="flex items-center">
             {[...Array(5)].map((_, i) => (
@@ -56,24 +57,29 @@ const ProductCard = ({ product, onClick }) => {
             ({product.reviews})
           </span>
         </div>
-        <div className="flex items-center gap-2 justify-between">
-          <span className="font-semibold text-purple-500">
-            ${product.price}
-          </span>
-          {product.originalPrice && (
-            <span className="text-sm mr-4 text-gray-500 line-through">
-              ${product.originalPrice}
+        {product.seller && (
+          <p className="text-xs text-gray-500 mb-2">by {product.seller}</p>
+        )}
+        <div className="flex items-center justify-between mt-auto">
+          <div className="flex items-center space-x-2">
+            <span className="text-lg font-bold text-gray-900">
+              ${product.price}
             </span>
-          )}
+            {product.originalPrice && (
+              <span className="text-sm text-gray-500 line-through">
+                ${product.originalPrice}
+              </span>
+            )}
+          </div>
           <Button
             size="sm"
-            className="bg-purple-600 text-white font-bold shadow-lg shadow-purple-300 hover:bg-purple-400"
+            className="bg-purple-600 text-white font-bold shadow-lg shadow-purple-300 hover:bg-purple-400 px-4 py-1 text-xs"
           >
             Add to Cart
           </Button>
         </div>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 };
 

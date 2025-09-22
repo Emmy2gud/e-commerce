@@ -46,8 +46,8 @@ export const SellerDashboard = ({ salesData }) => {
   ];
 
   return (
-    <div className="space-y-6 ">
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+    <div className="space-y-4 md:space-y-6">
+      <div className="grid gap-3 md:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard
           title="My Revenue"
           value="$45,230"
@@ -82,17 +82,17 @@ export const SellerDashboard = ({ salesData }) => {
         />
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className="grid gap-4 md:gap-6 grid-cols-1 lg:grid-cols-3">
         <SalesPerformanceChart data={salesData} />
         <QuickActions />
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid gap-4 md:gap-6 grid-cols-1 lg:grid-cols-2">
         <RecentOrders orders={recentOrders} />
         <InventoryStatus inventory={inventoryData} />
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-1">
+      <div className="grid gap-4 md:gap-6 grid-cols-1">
         <RecentSales />
       </div>
     </div>

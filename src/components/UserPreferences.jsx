@@ -14,7 +14,7 @@ const UserPreferences = () => {
   ];
 
   return (
-    <Card className="bg-white shadow-lg border border-gray-200">
+    <Card className="bg-white shadow-lg border-1 border-gray-300">
       <CardHeader>
         <CardTitle className="flex items-center">
           <Settings className="w-5 h-5 mr-2" />
@@ -38,28 +38,6 @@ const UserPreferences = () => {
         <div className="space-y-3 pt-4 border-t border-gray-300">
           <h3 className="font-medium text-gray-900 mb-3">Quick Settings</h3>
           
-          <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-            <div className="flex items-center space-x-3">
-              <Bell className="w-5 h-5 text-gray-400" />
-              <div>
-                <p className="font-medium text-sm">Email Notifications</p>
-                <p className="text-xs text-gray-500">Get updates on orders & offers</p>
-              </div>
-            </div>
-            <Button size="sm" variant="outline" className="border border-gray-300">Manage</Button>
-          </div>
-
-          <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-            <div className="flex items-center space-x-3">
-              <Shield className="w-5 h-5 text-gray-400" />
-              <div>
-                <p className="font-medium text-sm">Privacy Settings</p>
-                <p className="text-xs text-gray-500">Control your data & visibility</p>
-              </div>
-            </div>
-            <Button size="sm" variant="outline" className="border border-gray-300">Configure</Button>
-          </div>
-
           <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
             <div className="flex items-center space-x-3">
               <Globe className="w-5 h-5 text-gray-400" />

@@ -112,9 +112,9 @@ const ProfileHeader = () => {
                     <div className="text-xs text-gray-600">Favorites</div>
                   </div>
                   <div className="text-center p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-xl">
-                    <Users className="w-6 h-6 mx-auto mb-2 text-green-600" />
+                    <Star className="w-6 h-6 mx-auto mb-2 text-green-600" />
                     <div className="text-2xl font-bold text-gray-900">1.2k</div>
-                    <div className="text-xs text-gray-600">Following</div>
+                    <div className="text-xs text-gray-600">Reviews</div>
                   </div>
                   <div className="text-center p-4 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl">
                     <ShoppingBag className="w-6 h-6 mx-auto mb-2 text-purple-600" />

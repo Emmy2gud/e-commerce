@@ -11,7 +11,6 @@ import { Header } from "../../components/dashboard/Header"
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState("admin")
-  const [timeRange, setTimeRange] = useState("7d")
 
   const salesData = [
     { name: "Jan", value: 4000, mobile: 2400 },
@@ -61,34 +60,32 @@ const pieData = [
   ]
 
   return (
-    <div className="min-h-screen bg-white " >
- 
-
-      <main className="p-6">
+    <div className="min-h-screen">
+      <main className="p-3 sm:p-6">
         <div className="max-w-7xl mx-auto">
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6 ">
-            <div className="flex items-center justify-between ">
-              <TabsList className="grid w-fit grid-cols-2 bg-gray-100 ">
-                <TabsTrigger value="admin" className="px-6 text-black font-medium ">
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4 sm:space-y-6">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <TabsList className="grid w-full sm:w-fit grid-cols-2 bg-gray-100">
+                <TabsTrigger value="admin" className="px-4 sm:px-6 text-black font-medium text-sm sm:text-base">
                   Admin Dashboard
                 </TabsTrigger>
-                <TabsTrigger value="seller" className="px-6 text-black font-medium ">
+                <TabsTrigger value="seller" className="px-4 sm:px-6 text-black font-medium text-sm sm:text-base">
                   Seller Dashboard
                 </TabsTrigger>
               </TabsList>
 
-              <div className="flex items-center space-x-2">
-                <Button variant="outline" size="sm " className="flex items-center border-1 hover:bg-violet-600 hover:text-white border-gray-300 px-2 py-1 text-black">
-                  <Filter className="h-4 w-4 mr-2" />
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-2 sm:space-y-0 sm:space-x-2 w-full sm:w-auto">
+                <Button variant="outline" size="sm" className="flex items-center justify-center border-1 hover:bg-violet-600 hover:text-white border-gray-300 px-2 py-1 text-black text-xs sm:text-sm">
+                  <Filter className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                   Filter
                 </Button>
-                <Button variant="outline" size="sm " className="flex items-center border-1 hover:bg-violet-600 hover:text-white border-gray-300 px-2 py-1 text-black">
+                <Button variant="outline" size="sm" className="flex items-center justify-center border-1 hover:bg-violet-600 hover:text-white border-gray-300 px-2 py-1 text-black text-xs sm:text-sm">
                   Last 7 days
                 </Button>
               </div>
             </div>
 
-            <TabsContent value="admin" className="space-y-6">
+            <TabsContent value="admin" className="space-y-4 sm:space-y-6">
               <AdminDashboard
                 salesData={salesData}
                 pieData={pieData}
@@ -97,7 +94,7 @@ const pieData = [
               />
             </TabsContent>
 
-            <TabsContent value="seller" className="space-y-6">
+            <TabsContent value="seller" className="space-y-4 sm:space-y-6">
               <SellerDashboard salesData={salesData} />
             </TabsContent>
           </Tabs>

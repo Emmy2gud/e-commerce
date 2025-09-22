@@ -122,25 +122,24 @@ const orders = [
 
 
 export const OrderTable = () => (
-  <div className="w-full max-w-7xl mx-auto p-6 space-y-6 border-0 shadow-lg  bg-white rounded-lg">
+  <div className="w-full max-w-7xl mx-auto p-3 md:p-6 space-y-4 md:space-y-6 border-0 shadow-lg bg-white rounded-lg">
   
 
 
-    <div className="flex flex-wrap items-center gap-2 mb-4 ">
-      <div className="  items-center w-90">
-        <Input type="text" placeholder="Search orders..."  className='border-1 border-gray-300'/>
+    <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2 mb-4">
+      <div className="flex-1 min-w-0 sm:max-w-xs">
+        <Input type="text" placeholder="Search orders..." className='border-1 border-gray-300 w-full'/>
       </div>
-      <div className="  ">
+      <div className="flex gap-2">
         <StatusCombobox />
-      </div>
-      <div>
         <CategoryCombobox />
       </div>
     </div>
 
-    <Card className="border-1 border-gray-300 ">
+    <Card className="border-1 border-gray-300">
       <CardContent className="p-0">
-        <Table className="">
+        <div className="overflow-x-auto">
+        <Table className="min-w-full">
           <TableHeader className=' '>
             <TableRow className='border-b-2 border-gray-300' >
               <TableHead className="w-12">
@@ -262,8 +261,9 @@ export const OrderTable = () => (
             ))}
           </TableBody>
         </Table>
-
-        {/* Pagination Footer */}
+        </div>
+        
+        <div className="p-4">
         <Pagination>
           <PaginationContent>
             <PaginationItem>
@@ -280,6 +280,7 @@ export const OrderTable = () => (
             </PaginationItem>
           </PaginationContent>
         </Pagination>
+        </div>
       </CardContent>
     </Card>
   </div>

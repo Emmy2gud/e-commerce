@@ -72,19 +72,19 @@ const LocationSearch = ({ onSearch }) => {
               <MapPin className="mr-1 h-3 w-3" />
               Near me
             </Badge>
-            <Badge variant="outline" className="cursor-pointer hover:bg-accent/10">
+            <Badge variant="outline" className="cursor-pointer border-violet-600 hover:bg-violet-600 hover:text-white">
               Top rated
             </Badge>
-            <Badge variant="outline" className="cursor-pointer hover:bg-accent/10">
+            <Badge variant="outline" className="cursor-pointer border-violet-600 hover:bg-violet-600 hover:text-white">
               Open now
             </Badge>
           </div>
           
           <Button
-            variant="ghost"
+      
             size="sm"
             onClick={() => setShowFilters(!showFilters)}
-            className="text-muted-foreground hover:text-foreground"
+            className="bg-gradient-to-r from-purple-600 to-blue-600 text-white"
           >
             <SlidersHorizontal className="mr-2 h-4 w-4" />
             Filters
@@ -98,14 +98,14 @@ const LocationSearch = ({ onSearch }) => {
               <div>
                 <label className="block text-sm font-medium mb-2">Distance</label>
                 <Select value={distance} onValueChange={setDistance}>
-                  <SelectTrigger  className="border-1 border-gray-400">
+                  <SelectTrigger  className="border-1 border-gray-400 w-58">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent className="bg-white border-0">
-                    <SelectItem value="1">Within 1 km</SelectItem>
-                    <SelectItem value="5">Within 5 km</SelectItem>
-                    <SelectItem value="10">Within 10 km</SelectItem>
-                    <SelectItem value="25">Within 25 km</SelectItem>
+                  <SelectContent className="bg-white border-0 ">
+                    <SelectItem value="1" className='hover:bg-violet-300 hover:text-white'>Within 1 km</SelectItem>
+                    <SelectItem value="5" className='hover:bg-violet-300 hover:text-white'>Within 5 km</SelectItem>
+                    <SelectItem value="10" className='hover:bg-violet-300 hover:text-white'>Within 10 km</SelectItem>
+                    <SelectItem value="25" className='hover:bg-violet-300 hover:text-white'>Within 25 km</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -113,13 +113,13 @@ const LocationSearch = ({ onSearch }) => {
               <div>
                 <label className="block text-sm font-medium mb-2">Rating</label>
                 <Select>
-                  <SelectTrigger  className="border-1 border-gray-400">
+                  <SelectTrigger  className="border-1 border-gray-400 w-58">
                     <SelectValue placeholder="Any rating" />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-0">
-                    <SelectItem value="4">4+ stars</SelectItem>
-                    <SelectItem value="3">3+ stars</SelectItem>
-                    <SelectItem value="2">2+ stars</SelectItem>
+                    <SelectItem value="4" className='hover:bg-violet-300 hover:text-white'>4+ stars</SelectItem>
+                    <SelectItem value="3" className='hover:bg-violet-300 hover:text-white'>3+ stars</SelectItem>
+                    <SelectItem value="2" className='hover:bg-violet-300 hover:text-white'>2+ stars</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -127,14 +127,14 @@ const LocationSearch = ({ onSearch }) => {
               <div>
                 <label className="block text-sm font-medium mb-2">Price Range</label>
                 <Select>
-                  <SelectTrigger className="border-1 border-gray-400">
+                  <SelectTrigger className="border-1 border-gray-400 w-58">
                     <SelectValue placeholder="Any price" />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-0">
-                    <SelectItem value="$">$ - Budget</SelectItem>
-                    <SelectItem value="$$">$$ - Moderate</SelectItem>
-                    <SelectItem value="$$$">$$$ - Expensive</SelectItem>
-                    <SelectItem value="$$$$">$$$$ - Luxury</SelectItem>
+                    <SelectItem value="$" className='hover:bg-violet-300 hover:text-white'>$ - Budget</SelectItem>
+                    <SelectItem value="$$" className='hover:bg-violet-300 hover:text-white'>$$ - Moderate</SelectItem>
+                    <SelectItem value="$$$" className='hover:bg-violet-300 hover:text-white'>$$$ - Expensive</SelectItem>
+                    <SelectItem value="$$$$" className='hover:bg-violet-300 hover:text-white'>$$$$ - Luxury</SelectItem>
                   </SelectContent>
                 </Select>
               </div>

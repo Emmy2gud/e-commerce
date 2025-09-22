@@ -11,33 +11,33 @@ import StatusDropdown from "../../../../components/dashboard/ui/StatusDropdown";
 
 export const AddProduct = () => {
   return (
-    <div className="min-h-screen bg-gray-50 p-10">
-      <header className="">
-        <div className="mx-auto flex justify-between max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-2xl font-semibold text-gray-900">Add Product</h1>
-          <div className="flex items-center gap-3">
+    <div className="min-h-screen bg-gray-50 p-3 lg:p-10">
+      <header>
+        <div className="mx-auto flex flex-col lg:flex-row justify-between max-w-7xl py-4 lg:py-6 px-2 sm:px-4 lg:px-8 gap-4">
+          <h1 className="text-xl lg:text-2xl font-semibold text-gray-900">Add Product</h1>
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <Button
               variant="outline"
-              className="border-1 border-violet-600 text-violet-600"
+              className="border-1 border-violet-600 text-violet-600 text-sm"
             >
               Discard
             </Button>
             <Button
               variant="outline"
-              className="border-1 border-violet-600 text-violet-600"
+              className="border-1 border-violet-600 text-violet-600 text-sm"
             >
               Save Draft
             </Button>
-            <Button className="bg-violet-600 hover:bg-gray-900 text-white">
+            <Button className="bg-violet-600 hover:bg-gray-900 text-white text-sm">
               Publish
             </Button>
           </div>
         </div>
       </header>
 
-      <main className="p-6">
-        <div className="grid gap-6 lg:grid-cols-3 max-w-7xl mx-auto">
-          <div className="col-span-2 grid gap-6">
+      <main className="p-3 lg:p-6">
+        <div className="grid gap-4 lg:gap-6 grid-cols-1 lg:grid-cols-3 max-w-7xl mx-auto">
+          <div className="lg:col-span-2 grid gap-4 lg:gap-6">
             <Card className="bg-white border-0 shadow-lg">
               <CardHeader>
                 <CardTitle>Product Details</CardTitle>
@@ -127,7 +127,7 @@ export const AddProduct = () => {
             </Card>
           </div>
 
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4 lg:gap-6 lg:order-last">
             <Card className="bg-white border-0 shadow-lg">
               <CardHeader>
                 <CardTitle>Pricing</CardTitle>

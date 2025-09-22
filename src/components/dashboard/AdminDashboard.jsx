@@ -9,9 +9,9 @@ import { TopProducts } from "./ui/TopProducts"
 import { RecentSellers } from "./ui/RecentSellers"
 
 export const AdminDashboard = ({ salesData, pieData, recentActivities, topProducts }) => (
-  <div className="space-y-6">
+  <div className="space-y-4 md:space-y-6">
 
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+    <div className="grid gap-3 md:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
       <StatCard
         title="Total Revenue"
         value="$284,590"
@@ -46,17 +46,17 @@ export const AdminDashboard = ({ salesData, pieData, recentActivities, topProduc
       />
     </div>
 
-    <div className="grid gap-6 lg:grid-cols-3">
+    <div className="grid gap-4 md:gap-6 grid-cols-1 lg:grid-cols-3">
       <RevenueChart data={salesData} />
       <CategoryDistribution data={pieData} />
     </div>
 
-    <div className="grid gap-6 lg:grid-cols-2">
+    <div className="grid gap-4 md:gap-6 grid-cols-1 lg:grid-cols-2">
       <RecentActivities activities={recentActivities} />
       <TopProducts products={topProducts} />
     </div>
 
-    <div className="grid gap-6 lg:grid-cols-1">
+    <div className="grid gap-4 md:gap-6 grid-cols-1">
 <RecentSellers/>
     </div>
   </div>
