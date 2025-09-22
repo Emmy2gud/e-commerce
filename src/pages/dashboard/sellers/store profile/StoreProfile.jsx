@@ -323,7 +323,7 @@ const StoreProfile = () => {
       <Card className='bg-white border-0 shadow-lg'>
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
-            {React.createElement(steps[currentStep - 1].icon, { className: "h-5 w-5" })}
+            {React.createElement(steps[currentStep - 1].icon, { className: "h-5 w-5 text-violet-600" })}
             <span>{steps[currentStep - 1].title}</span>
           </CardTitle>
           <CardDescription>

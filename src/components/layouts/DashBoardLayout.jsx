@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Outlet, Link } from 'react-router-dom';
-
+import ScrollToTop from '../ScrollToTop';
 import { Separator } from '@/components/ui/separator';
 import {
   SidebarInset,
@@ -144,8 +144,8 @@ const sellerNav = [
     url: '#',
     icon: <Settings />,
     items: [
-      { title: 'Account Settings', url: '/settings/account' },
-      { title: 'Notifications', url: '/settings/notifications' },
+      { title: 'Account Settings', url: 'settings/account' },
+      { title: 'Notifications', url: 'settings/notifications' },
     ],
   }
 ];
@@ -176,6 +176,7 @@ class DashBoardLayout extends React.Component {
             </main>
           </div>
         </SidebarInset>
+        <ScrollToTop variant="rocket" />
       </SidebarProvider>
     );
   }

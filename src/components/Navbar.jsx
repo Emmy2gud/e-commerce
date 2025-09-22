@@ -56,6 +56,99 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 
+const MobileCategoryItem = ({ category, onLinkClick }) => {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+
+  return (
+    <div className="space-y-2">
+      <div className="flex items-center justify-between">
+        <Button
+          variant="ghost"
+          className="flex-1 justify-start text-left font-medium"
+          asChild
+        >
+          <Link
+            to={category.href}
+            onClick={onLinkClick}
+          >
+            {category.title}
+          </Link>
+        </Button>
+        {(category.subcategories || category.featured) && (
+          <Button
+            variant="ghost"
+            size="sm"
+            className="px-2"
+            onClick={() => setIsExpanded(!isExpanded)}
+          >
+            {isExpanded ? (
+              <ChevronUp className="h-4 w-4" />
+            ) : (
+              <ChevronDown className="h-4 w-4" />
+            )}
+          </Button>
+        )}
+      </div>
+      
+      {isExpanded && (
+        <div className="ml-4 space-y-2">
+          {/* Featured Items */}
+          {category.featured && (
+            <div className="space-y-2">
+              <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide px-2">Featured</p>
+              {category.featured.map((item) => (
+                <Button
+                  key={item.name}
+                  variant="ghost"
+                  size="sm"
+                  className="w-full justify-start text-muted-foreground"
+                  asChild
+                >
+                  <Link
+                    to={item.href}
+                    onClick={onLinkClick}
+                    className="flex items-center space-x-2"
+                  >
+                    <div className="text-gray-400 scale-75">
+                      {item.icon}
+                    </div>
+                    <span>{item.name}</span>
+                  </Link>
+                </Button>
+              ))}
+            </div>
+          )}
+          
+          {/* Subcategories */}
+          {category.subcategories && (
+            <div className="space-y-1">
+              {category.featured && (
+                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide px-2 mt-3">Categories</p>
+              )}
+              {category.subcategories.map((subcat) => (
+                <Button
+                  key={subcat.name}
+                  variant="ghost"
+                  size="sm"
+                  className="w-full justify-start text-muted-foreground"
+                  asChild
+                >
+                  <Link
+                    to={subcat.href}
+                    onClick={onLinkClick}
+                  >
+                    {subcat.name}
+                  </Link>
+                </Button>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
 const MegaMenuContent = ({ category }) => (
   <div className="grid gap-6 p-6 w-[800px]">
     <div className="grid grid-cols-4 gap-6">
@@ -344,7 +437,7 @@ const Navbar = () => {
               </div>
 
               {/* Mobile Actions */}
-              <div className="flex md:hidden items-center space-x-2">
+              <div className="flex md:hidden items-center space-x-2 ">
                 {/* Mobile Search */}
                 <Dialog open={isSearchOpen} onOpenChange={setIsSearchOpen}>
                   <DialogTrigger asChild>
@@ -352,7 +445,7 @@ const Navbar = () => {
                       <Search className="h-5 w-5" />
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="top-0 translate-y-0 max-w-full h-auto p-0">
+                  <DialogContent className="top-0 translate-y-0 max-w-full h-auto p-0 bg-white">
                     <div className="p-4">
                       <div className="relative">
                         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
@@ -364,14 +457,14 @@ const Navbar = () => {
                           onChange={(e) => setSearchQuery(e.target.value)}
                           autoFocus
                         />
-                        <Button
+                        {/* <Button
                           variant="ghost"
                           size="icon"
                           className="absolute right-1 top-1/2 transform -translate-y-1/2"
                           onClick={() => setIsSearchOpen(false)}
                         >
                           <X className="h-4 w-4" />
-                        </Button>
+                        </Button> */}
                       </div>
                     </div>
                   </DialogContent>
@@ -384,10 +477,10 @@ const Navbar = () => {
                   className="relative"
                   asChild
                 >
-                  <Link href="/cart">
+                  <Link to="/cart">
                     <ShoppingCart className="h-5 w-5" />
                     {cartCount > 0 && (
-                      <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs bg-purple-600">
+                      <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs bg-purple-600 text-white">
                         {cartCount}
                       </Badge>
                     )}
@@ -404,29 +497,116 @@ const Navbar = () => {
                       <Menu className="h-5 w-5" />
                     </Button>
                   </SheetTrigger>
-                  <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                  <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-white border-0 overflow-y-auto">
                     <SheetHeader>
                       <SheetTitle>Menu</SheetTitle>
                     </SheetHeader>
                     <div className="flex flex-col space-y-4 mt-6">
                       {/* User Section */}
                       {isLoggedIn ? (
-                        <div className="flex items-center space-x-3 p-4 bg-accent rounded-lg">
-                          <div className="h-10 w-10 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center">
-                            <span className="text-white font-medium">JD</span>
+                        <div className="space-y-4">
+                          <div className="flex items-center space-x-3 p-4 bg-accent rounded-lg">
+                            <div className="h-10 w-10 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center">
+                              <span className="text-white font-medium">JD</span>
+                            </div>
+                            <div>
+                              <p className="font-medium">John Doe</p>
+                              <p className="text-sm text-muted-foreground">
+                                john@example.com
+                              </p>
+                            </div>
                           </div>
-                          <div>
-                            <p className="font-medium">John Doe</p>
-                            <p className="text-sm text-muted-foreground">
-                              john@example.com
-                            </p>
+                          
+                          {/* User Actions */}
+                          <div className="space-y-2 px-2">
+                            <Button
+                              variant="ghost"
+                              className="w-full justify-start"
+                              asChild
+                            >
+                              <Link
+                                to="/profile"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                <User className="mr-2 h-4 w-4" />
+                                Profile
+                              </Link>
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              className="w-full justify-start"
+                              asChild
+                            >
+                              <Link
+                                to="/orders"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                <Package className="mr-2 h-4 w-4" />
+                                My Orders
+                              </Link>
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              className="w-full justify-start"
+                              asChild
+                            >
+                              <Link
+                                to="/wishlist"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                <Heart className="mr-2 h-4 w-4" />
+                                Wishlist
+                              </Link>
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              className="w-full justify-start"
+                              asChild
+                            >
+                              <Link
+                                to="/cart"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                <ShoppingCart className="mr-2 h-4 w-4" />
+                                Cart
+                                {cartCount > 0 && (
+                                  <Badge className="ml-auto h-5 w-5 flex items-center justify-center p-0 text-xs bg-purple-600 text-white">
+                                    {cartCount}
+                                  </Badge>
+                                )}
+                              </Link>
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              className="w-full justify-start"
+                              asChild
+                            >
+                              <Link
+                                to="/settings"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                <Settings className="mr-2 h-4 w-4" />
+                                Settings
+                              </Link>
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              className="w-full justify-start text-red-600 hover:text-red-700 hover:bg-red-50"
+                              onClick={() => {
+                                // Handle logout logic here
+                                setIsMobileMenuOpen(false);
+                              }}
+                            >
+                              <LogOut className="mr-2 h-4 w-4" />
+                              Logout
+                            </Button>
                           </div>
                         </div>
                       ) : (
                         <div className="flex flex-col space-y-2">
                           <Button asChild>
                             <Link
-                              href="/login"
+                              to="/login"
                               onClick={() => setIsMobileMenuOpen(false)}
                             >
                               Login
@@ -434,7 +614,7 @@ const Navbar = () => {
                           </Button>
                           <Button variant="outline" asChild>
                             <Link
-                              href="/signup"
+                              to="/signup"
                               onClick={() => setIsMobileMenuOpen(false)}
                             >
                               Sign Up
@@ -443,90 +623,17 @@ const Navbar = () => {
                         </div>
                       )}
 
-                      {/* Categories */}
-                      <div className="space-y-2">
+                      {/* Categories with Dropdowns */}
+                      <div className="space-y-2 pt-4 border-t border-gray-300">
+                        <h3 className="font-semibold text-sm text-gray-500 uppercase tracking-wide px-2">Categories</h3>
                         {categories.map((category) => (
-                          <div key={category.title} className="space-y-2">
-                            <Button
-                              variant="ghost"
-                              className="w-full justify-start text-left"
-                              asChild
-                            >
-                              <Link
-                                href={category.href}
-                                onClick={() => setIsMobileMenuOpen(false)}
-                              >
-                                {category.title}
-                              </Link>
-                            </Button>
-                            {category.subcategories && (
-                              <div className="ml-4 space-y-1">
-                                {category.subcategories.map((subcat) => (
-                                  <Button
-                                    key={subcat.name}
-                                    variant="ghost"
-                                    size="sm"
-                                    className="w-full justify-start text-muted-foreground"
-                                    asChild
-                                  >
-                                    <Link
-                                      href={subcat.href}
-                                      onClick={() => setIsMobileMenuOpen(false)}
-                                    >
-                                      {subcat.name}
-                                    </Link>
-                                  </Button>
-                                ))}
-                              </div>
-                            )}
-                          </div>
+                          <MobileCategoryItem 
+                            key={category.title} 
+                            category={category} 
+                            onLinkClick={() => setIsMobileMenuOpen(false)}
+                          />
                         ))}
                       </div>
-
-                      {/* Quick Links */}
-                      {isLoggedIn && (
-                        <div className="space-y-2 pt-4 border-t">
-                          <Button
-                            variant="ghost"
-                            className="w-full justify-start"
-                            asChild
-                          >
-                            <Link
-                              href="/orders"
-                              onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                              <Package className="mr-2 h-4 w-4" />
-                              My Orders
-                            </Link>
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            className="w-full justify-start"
-                            asChild
-                          >
-                            <Link
-                              href="/wishlist"
-                              onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                              <Heart className="mr-2 h-4 w-4" />
-                              Wishlist
-                            </Link>
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            className="w-full justify-start"
-                            asChild
-                          >
-                            <Link
-                              href="/settings"
-                              onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                              <Settings className="mr-2 h-4 w-4" />
-                              Settings
-                            </Link>
-                          </Button>
-                        </div>
-                      )}
                     </div>
                   </SheetContent>
                 </Sheet>

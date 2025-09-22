@@ -2,6 +2,7 @@
 import React from "react";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
+import ScrollToTop from "../ScrollToTop";
 import Home from "../../pages/Home";
 import Profile from "../../pages/Profile";
 import Cart from "../../pages/Cart";
@@ -33,6 +34,7 @@ class AppLayout extends React.Component {
           <Route path="/location" element={<NearbyUser />} />
         </Routes>
         <Footer />
+        <ScrollToTop variant="classic" />
       </div>
     );
   }

@@ -260,7 +260,7 @@ const Home = () => {
         <CarouselDemo />
       </header>
       <main>
-        <section className="px-4 sm:px-6 lg:px-8">
+        <section className="px-4 sm:px-6  ">
           <FilterPage />
         </section>
 

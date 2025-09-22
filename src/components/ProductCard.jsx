@@ -2,6 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ product, className = "" }) => {
   return (
@@ -71,12 +72,15 @@ const ProductCard = ({ product, className = "" }) => {
               </span>
             )}
           </div>
+          <Link to={`product/${product.id}`}>
           <Button
             size="sm"
             className="bg-purple-600 text-white font-bold shadow-lg shadow-purple-300 hover:bg-purple-400 px-4 py-1 text-xs"
           >
             Add to Cart
           </Button>
+          </Link>
+
         </div>
       </CardContent>
     </Card>

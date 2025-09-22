@@ -28,6 +28,7 @@ import ComplaintDetail from "./pages/dashboard/admin/complaints/ComplaintDetail"
 import StoreSetup from "./pages/StoreSetup";
 import StoreSetupDemo from "./pages/StoreSetupDemo";
 import StoreProfile from "./pages/dashboard/sellers/store profile/StoreProfile";
+import SellerNotification from "./pages/dashboard/sellers/notifications/SellerNotification";
 
 class App extends React.Component {
   render() {
@@ -49,6 +50,7 @@ class App extends React.Component {
               <Route path="orders" element={<OrderList />} />
               <Route path="sales/payouts" element={<Payouts />} />
               <Route path="sales/transactions" element={<Transactions />} />
+                <Route path="settings/notifications" element={<SellerNotification />} />
               {/* admin dashboard page */}
               <Route path="admin/products" element={<AllProducts />} />
               <Route
