@@ -36,10 +36,6 @@ class App extends React.Component {
       <div className="App">
         <BrowserRouter>
           <Routes>
-            <Route path="/*" element={<AppLayout />} />
-            <Route path="/store-setup" element={<StoreSetup />} />
-            <Route path="/store-demo" element={<StoreSetupDemo />} />
-
             {/* Dashboard routes inside DashboardLayout */}
             <Route path="/dashboard" element={<DashBoardLayout />}>
               <Route index element={<DashBoard />} />
@@ -50,7 +46,7 @@ class App extends React.Component {
               <Route path="orders" element={<OrderList />} />
               <Route path="sales/payouts" element={<Payouts />} />
               <Route path="sales/transactions" element={<Transactions />} />
-                <Route path="settings/notifications" element={<SellerNotification />} />
+              <Route path="settings/notifications" element={<SellerNotification />} />
               {/* admin dashboard page */}
               <Route path="admin/products" element={<AllProducts />} />
               <Route
@@ -76,6 +72,13 @@ class App extends React.Component {
                 element={<Notification />}
               />
             </Route>
+            
+            {/* Standalone routes */}
+            <Route path="/store-setup" element={<StoreSetup />} />
+            <Route path="/store-demo" element={<StoreSetupDemo />} />
+            
+            {/* All other routes go to AppLayout - MUST BE LAST */}
+            <Route path="/*" element={<AppLayout />} />
           </Routes>
         </BrowserRouter>
       </div>
