@@ -39,7 +39,6 @@ import SignUp from "./pages/SignUp";
 import ProductLists from "./pages/ProductLists";
 import NearbyUser from "./pages/NearbyUser";
 import ProductDetail from "./pages/ProductDetail";
-;
 import VendorStorefront from "./pages/VendorStorefront";
 
 class App extends React.Component {

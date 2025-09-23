@@ -8,10 +8,26 @@
       }
     }
   ],
+
+  "framework": "vite",
+ 
   "rewrites": [
+    {
+      "source": "/dashboard/(.*)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/store-setup",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/store-demo",
+      "destination": "/index.html"
+    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
+
 }
