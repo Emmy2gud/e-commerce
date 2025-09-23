@@ -30,6 +30,18 @@ import StoreSetupDemo from "./pages/StoreSetupDemo";
 import StoreProfile from "./pages/dashboard/sellers/store profile/StoreProfile";
 import SellerNotification from "./pages/dashboard/sellers/notifications/SellerNotification";
 
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import Cart from "./pages/Cart";
+import CheckOut from "./pages/CheckOut";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
+import ProductLists from "./pages/ProductLists";
+import NearbyUser from "./pages/NearbyUser";
+import ProductDetail from "./pages/ProductDetail";
+;
+import VendorStorefront from "./pages/VendorStorefront";
+
 class App extends React.Component {
   render() {
     return (
@@ -78,7 +90,18 @@ class App extends React.Component {
             <Route path="/store-demo" element={<StoreSetupDemo />} />
             
             {/* All other routes go to AppLayout - MUST BE LAST */}
-            <Route path="/*" element={<AppLayout />} />
+            <Route path="/" element={<AppLayout />}>
+              <Route index element={<Home />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="cart" element={<Cart />} />
+              <Route path="checkout" element={<CheckOut />} />
+              <Route path="vendor" element={<VendorStorefront />} />
+              <Route path="productlists" element={<ProductLists />} />
+              <Route path="product/:id" element={<ProductDetail />} />
+              <Route path="login" element={<Login />} />
+              <Route path="signup" element={<SignUp />} />
+              <Route path="location" element={<NearbyUser />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </div>
