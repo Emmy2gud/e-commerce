@@ -16,16 +16,17 @@ export function CarouselDemo() {
       buttonText: "SHOP NOW",
       bgGradient: "from-purple-600 to-blue-500",
       image: "/images/pic5.png",
-      textColor: "text-white"
+      textColor: "text-white",
     },
     {
       id: 2,
       title: "NEW TECH ARRIVALS",
-      subtitle: "Discover the latest gadgets and electronics with amazing deals.",
+      subtitle:
+        "Discover the latest gadgets and electronics with amazing deals.",
       buttonText: "EXPLORE NOW",
       bgGradient: "from-blue-600 to-cyan-500",
       image: "/images/pic5.png",
-      textColor: "text-white"
+      textColor: "text-white",
     },
     {
       id: 3,
@@ -34,7 +35,7 @@ export function CarouselDemo() {
       buttonText: "SHOP FASHION",
       bgGradient: "from-pink-600 to-rose-500",
       image: "/images/pic5.png",
-      textColor: "text-white"
+      textColor: "text-white",
     },
     {
       id: 4,
@@ -43,7 +44,7 @@ export function CarouselDemo() {
       buttonText: "DISCOVER MORE",
       bgGradient: "from-emerald-600 to-teal-500",
       image: "/images/pic5.png",
-      textColor: "text-white"
+      textColor: "text-white",
     },
     {
       id: 5,
@@ -52,8 +53,8 @@ export function CarouselDemo() {
       buttonText: "GET ACTIVE",
       bgGradient: "from-orange-600 to-red-500",
       image: "/images/pic5.png",
-      textColor: "text-white"
-    }
+      textColor: "text-white",
+    },
   ];
 
   return (
@@ -61,15 +62,19 @@ export function CarouselDemo() {
       className="w-full max-w-7xl mx-auto rounded-2xl"
       opts={{
         loop: true,
-        align: "start"
+        align: "start",
       }}
     >
       <CarouselContent>
         {slides.map((slide) => (
           <CarouselItem key={slide.id}>
-            <div className="p-1">
-              <Card className="border-none">
-                <CardContent className={`flex items-center justify-center p-0 aspect-[16/6] sm:aspect-[16/7] md:aspect-[16/6] rounded-xl overflow-hidden bg-gradient-to-r ${slide.bgGradient}`}>
+            <div className="">
+              <Card
+                className={`relative border-none bg-gradient-to-r ${slide.bgGradient}`}
+              >
+                <CardContent
+                  className={`flex items-center  justify-center  aspect-[16/6] sm:aspect-[16/7] md:aspect-[16/6] rounded-xl overflow-hidden `}
+                >
                   <div className="flex flex-col md:flex-row items-center justify-between w-full h-full px-4 sm:px-6 md:px-10 lg:px-16">
                     <div className="flex-1 text-center md:text-left z-10 mb-4 md:mb-0">
                       <div className={`${slide.textColor} max-w-2xl`}>
@@ -83,18 +88,23 @@ export function CarouselDemo() {
                           {slide.buttonText}
                         </button>
                       </div>
+
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-orbit-bounce z-100">
+                        <div className="w-50 h-50 bg-gradient-to-r from-purple-600 to-blue-500 rounded-full opacity-60 "></div>
+                      </div>
                     </div>
-                    
-                    <div className="flex-1 flex justify-center md:justify-end relative">
-                      <div className="relative w-full max-w-sm md:max-w-md lg:max-w-lg">
+                    <div className="absolute top-0 -right-9 -translate-x-1/8 -translate-y-1/9 z-10">
+                      <div className="circle bg-purple-200 rounded-full opacity-30 "></div>
+                    </div>
+                    <div className="flex-1 flex justify-center md:justify-end relative ">
+                      <div className=" w-full max-w-sm md:max-w-md lg:max-w-lg ">
+                      
+
                         <img
                           src={slide.image}
                           alt={`Slide ${slide.id}`}
-                          className="w-full h-auto object-cover rounded-lg "
+                          className="w-full h-auto object-cover rounded-lg relative z-10"
                         />
-                        {/* Decorative elements */}
-                        <div className="absolute -top-4 -right-4 w-20 h-20 bg-white/20 rounded-full blur-xl animate-pulse hidden md:block"></div>
-                        <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-white/10 rounded-full blur-lg animate-pulse hidden md:block"></div>
                       </div>
                     </div>
                   </div>

@@ -232,7 +232,7 @@ export default function FilterPage() {
           <div className="lg:hidden mb-4">
             <Sheet open={isFilterOpen} onOpenChange={setIsFilterOpen}>
               <SheetTrigger asChild>
-                <Button variant="outline" className="w-full flex items-center justify-center gap-2">
+                <Button variant="outline" className="w-full flex items-center justify-center gap-2 text-gray-400 border-violet-600 hover:bg-violet-600 hover:text-white">
                   <Filter className="h-4 w-4" />
                   Filters
                 </Button>
@@ -304,13 +304,13 @@ export default function FilterPage() {
 
             {/* Active Filters */}
             <div className="flex flex-wrap gap-2 mb-4 md:mb-6">
-              <Badge variant="secondary" className="px-3 py-1 bg-gray-300 font-semibold text-gray-600">
+              <Badge variant="secondary" className="px-3 py-1 bg-violet-300 font-semibold text-violet-600">
                 Audio & Headphones ×
               </Badge>
-              <Badge variant="secondary" className="px-3 py-1 bg-gray-300 font-semibold text-gray-600">
+              <Badge variant="secondary" className="px-3 py-1 bg-violet-300 font-semibold text-violet-600">
                 $50 - $100 ×
               </Badge>
-              <Badge variant="secondary" className="px-3 py-1 bg-gray-300 font-semibold text-gray-600">
+              <Badge variant="secondary" className="px-3 py-1 bg-violet-300 font-semibold text-violet-600">
                 4+ Stars ×
               </Badge>
             </div>

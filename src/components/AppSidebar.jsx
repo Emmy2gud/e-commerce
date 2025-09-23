@@ -64,7 +64,7 @@ export function AppSidebar({ adminNav, sellerNav }) {
         </SidebarMenu>
       </SidebarHeader>
 
-      <SidebarContent className="flex-1 p-2 lg:p-4 overflow-y-auto">
+      <SidebarContent className="flex-1 p-2 lg:p-4 overflow-y-auto no-scrollbar ">
         <SidebarGroup>
           <SidebarMenu>
             {data.navMain.map((item) => (
