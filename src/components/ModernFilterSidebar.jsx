@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import FilterSection from './Filtersection';
+import FilterSection from './FilterSection';
 import { ChevronDown, ChevronUp, X, Filter, Star, DollarSign, Tag, Sparkles } from 'lucide-react';
 
 const ModernFilterSidebar = ({ isOpen, onClose }) => {
