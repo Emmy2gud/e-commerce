@@ -45,7 +45,7 @@ const Profile = () => {
       <ProfileHeader />
       
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 relative z-10">
+      <div className="max-w-6xl mx-auto px-2 sm:px-4 lg:px-8 pt-8 relative z-10">
         
   
         {/* Modern Tabbed Interface with responsive design */}
@@ -56,70 +56,75 @@ const Profile = () => {
                 <TabsList className="w-full bg-transparent h-auto p-0 justify-start min-w-fit">
                   <TabsTrigger 
                     value="overview" 
-                    className="flex items-center space-x-2 px-3 sm:px-6 py-4 rounded-none border-b-2 border-transparent data-[state=active]:rounded-tl-2xl data-[state=active]:border-blue-500 data-[state=active]:bg-transparent data-[state=active]:text-blue-600 hover:bg-gray-50 whitespace-nowrap min-w-fit"
+                    className="flex items-center space-x-1 sm:space-x-2 px-2 sm:px-3 lg:px-6 py-3 sm:py-4 rounded-none border-b-2 border-transparent data-[state=active]:rounded-tl-2xl data-[state=active]:border-blue-500 data-[state=active]:bg-transparent data-[state=active]:text-blue-600 hover:bg-gray-50 whitespace-nowrap min-w-fit text-xs sm:text-sm"
                   >
-                    <BarChart3 className="w-4 h-4" />
+                    <BarChart3 className="w-3 h-3 sm:w-4 sm:h-4" />
                     <span className="hidden sm:inline">Overview</span>
+                    <span className="sm:hidden">Stats</span>
                   </TabsTrigger>
                   <TabsTrigger 
                     value="wishlist" 
-                    className="flex items-center space-x-2 px-3 sm:px-6 py-4 rounded-none border-b-2 border-transparent data-[state=active]:border-blue-500 data-[state=active]:bg-transparent data-[state=active]:text-blue-600 hover:bg-gray-50 whitespace-nowrap min-w-fit"
+                    className="flex items-center space-x-1 sm:space-x-2 px-2 sm:px-3 lg:px-6 py-3 sm:py-4 rounded-none border-b-2 border-transparent data-[state=active]:border-blue-500 data-[state=active]:bg-transparent data-[state=active]:text-blue-600 hover:bg-gray-50 whitespace-nowrap min-w-fit text-xs sm:text-sm"
                   >
-                    <Heart className="w-4 h-4" />
+                    <Heart className="w-3 h-3 sm:w-4 sm:h-4" />
                     <span className="hidden sm:inline">Wishlist</span>
+                    <span className="sm:hidden">Wish</span>
                   </TabsTrigger>
                   <TabsTrigger 
                     value="orders" 
-                    className="flex items-center space-x-2 px-3 sm:px-6 py-4 rounded-none border-b-2 border-transparent data-[state=active]:border-blue-500 data-[state=active]:bg-transparent data-[state=active]:text-blue-600 hover:bg-gray-50 whitespace-nowrap min-w-fit"
+                    className="flex items-center space-x-1 sm:space-x-2 px-2 sm:px-3 lg:px-6 py-3 sm:py-4 rounded-none border-b-2 border-transparent data-[state=active]:border-blue-500 data-[state=active]:bg-transparent data-[state=active]:text-blue-600 hover:bg-gray-50 whitespace-nowrap min-w-fit text-xs sm:text-sm"
                   >
-                    <Package className="w-4 h-4" />
+                    <Package className="w-3 h-3 sm:w-4 sm:h-4" />
                     <span className="hidden sm:inline">Orders</span>
+                    <span className="sm:hidden">Orders</span>
                   </TabsTrigger>
                   <TabsTrigger 
                     value="activity" 
-                    className="flex items-center space-x-2 px-3 sm:px-6 py-4 rounded-none border-b-2 border-transparent data-[state=active]:border-blue-500 data-[state=active]:bg-transparent data-[state=active]:text-blue-600 hover:bg-gray-50 whitespace-nowrap min-w-fit"
+                    className="flex items-center space-x-1 sm:space-x-2 px-2 sm:px-3 lg:px-6 py-3 sm:py-4 rounded-none border-b-2 border-transparent data-[state=active]:border-blue-500 data-[state=active]:bg-transparent data-[state=active]:text-blue-600 hover:bg-gray-50 whitespace-nowrap min-w-fit text-xs sm:text-sm"
                   >
-                    <Clock className="w-4 h-4" />
+                    <Clock className="w-3 h-3 sm:w-4 sm:h-4" />
                     <span className="hidden sm:inline">Activity</span>
+                    <span className="sm:hidden">Activity</span>
                   </TabsTrigger>
                   <TabsTrigger 
                     value="settings" 
-                    className="flex items-center space-x-2 px-3 sm:px-6 py-4 rounded-none border-b-2 border-transparent data-[state=active]:rounded-tr-2xl data-[state=active]:border-blue-500 data-[state=active]:bg-transparent data-[state=active]:text-blue-600 hover:bg-gray-50 whitespace-nowrap min-w-fit"
+                    className="flex items-center space-x-1 sm:space-x-2 px-2 sm:px-3 lg:px-6 py-3 sm:py-4 rounded-none border-b-2 border-transparent data-[state=active]:rounded-tr-2xl data-[state=active]:border-blue-500 data-[state=active]:bg-transparent data-[state=active]:text-blue-600 hover:bg-gray-50 whitespace-nowrap min-w-fit text-xs sm:text-sm"
                   >
-                    <Settings className="w-4 h-4" />
+                    <Settings className="w-3 h-3 sm:w-4 sm:h-4" />
                     <span className="hidden sm:inline">Settings</span>
+                    <span className="sm:hidden">Settings</span>
                   </TabsTrigger>
                 </TabsList>
               </div>
             </div>
 
             {/* Tab Contents */}
-            <div className="p-6">
+            <div className="p-3 sm:p-4 lg:p-6">
               <TabsContent value="overview" className="mt-0">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                   {/* Quick Stats Cards */}
                   <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-100">
-                    <CardContent className="p-6">
-                      <div className="flex items-center justify-between mb-4">
-                        <h3 className="text-lg font-semibold text-gray-900">Shopping Summary</h3>
-                        <ShoppingBag className="w-5 h-5 text-blue-600" />
+                    <CardContent className="p-4 sm:p-6">
+                      <div className="flex items-center justify-between mb-3 sm:mb-4">
+                        <h3 className="text-base sm:text-lg font-semibold text-gray-900">Shopping Summary</h3>
+                        <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
                       </div>
-                      <div className="space-y-3">
+                      <div className="space-y-2 sm:space-y-3">
                         <div className="flex justify-between items-center">
-                          <span className="text-gray-600">Total Orders</span>
-                          <span className="font-semibold text-gray-900">89</span>
+                          <span className="text-sm sm:text-base text-gray-600">Total Orders</span>
+                          <span className="font-semibold text-sm sm:text-base text-gray-900">89</span>
                         </div>
                         <div className="flex justify-between items-center">
-                          <span className="text-gray-600">Total Spent</span>
-                          <span className="font-semibold text-green-600">$2,847.50</span>
+                          <span className="text-sm sm:text-base text-gray-600">Total Spent</span>
+                          <span className="font-semibold text-sm sm:text-base text-green-600">$2,847.50</span>
                         </div>
                         <div className="flex justify-between items-center">
-                          <span className="text-gray-600">Saved Amount</span>
-                          <span className="font-semibold text-orange-600">$423.20</span>
+                          <span className="text-sm sm:text-base text-gray-600">Saved Amount</span>
+                          <span className="font-semibold text-sm sm:text-base text-orange-600">$423.20</span>
                         </div>
                         <div className="flex justify-between items-center">
-                          <span className="text-gray-600">Member Since</span>
-                          <span className="font-semibold text-gray-900">March 2022</span>
+                          <span className="text-sm sm:text-base text-gray-600">Member Since</span>
+                          <span className="font-semibold text-sm sm:text-base text-gray-900">March 2022</span>
                         </div>
                       </div>
                     </CardContent>

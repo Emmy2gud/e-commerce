@@ -277,9 +277,16 @@ export default function VendorStorefront() {
                 </div>
 
                 <div className="flex flex-col space-y-2">
-                  <button className="flex bg-gradient-to-r from-purple-600 to-blue-600 hover:bg-purple-700 text-white justify-center items-center px-4 py-2 rounded-lg shadow hover:shadow-lg transition-shadow">
-                    <Heart className="w-4 h-4 mr-2 text-white" />
-                    Follow Store
+                  <button 
+                    onClick={() => setIsFollowing(!isFollowing)}
+                    className={`flex justify-center items-center px-4 py-2 rounded-lg shadow hover:shadow-lg transition-all ${
+                      isFollowing 
+                        ? "bg-gray-600 hover:bg-gray-700 text-white" 
+                        : "bg-gradient-to-r from-purple-600 to-blue-600 hover:bg-purple-700 text-white"
+                    }`}
+                  >
+                    <Heart className={`w-4 h-4 mr-2 ${isFollowing ? "fill-current" : ""}`} />
+                    {isFollowing ? "Following" : "Follow Store"}
                   </button>
                   <Button
                     variant="outline"
@@ -381,31 +388,31 @@ export default function VendorStorefront() {
               <TabsList className="grid w-full grid-cols-5 bg-gray-100/50 p-1 rounded-xl mb-3">
                 <TabsTrigger
                   value="products"
-                  className="rounded-lg data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:shadow-sm"
+                  className="rounded-lg data-[state=active]:bg-gradient-to-r from-purple-600 to-blue-600 data-[state=active]:text-white data-[state=active]:shadow-xs"
                 >
                   Products
                 </TabsTrigger>
                 <TabsTrigger
                   value="about"
-                  className="rounded-lg data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:shadow-sm"
+                  className="rounded-lg data-[state=active]:bg-gradient-to-r from-purple-600 to-blue-600 data-[state=active]:text-white data-[state=active]:shadow-xs"
                 >
                   About
                 </TabsTrigger>
                 <TabsTrigger
                   value="reviews"
-                  className="rounded-lg data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:shadow-sm"
+                  className="rounded-lg data-[state=active]:bg-gradient-to-r from-purple-600 to-blue-600 data-[state=active]:text-white data-[state=active]:shadow-xs"
                 >
                   Reviews
                 </TabsTrigger>
                 <TabsTrigger
                   value="policies"
-                  className="rounded-lg data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:shadow-sm"
+                  className="rounded-lg data-[state=active]:bg-gradient-to-r from-purple-600 to-blue-600 data-[state=active]:text-white data-[state=active]:shadow-xs"
                 >
                   Policies
                 </TabsTrigger>
                 <TabsTrigger
                   value="contact"
-                  className="rounded-lg data-[state=active]:bg-white data-[state=active]:text-black  data-[state=active]:shadow-sm"
+                  className="rounded-lg data-[state=active]:bg-gradient-to-r from-purple-600 to-blue-600 data-[state=active]:text-white  data-[state=active]:shadow-xs"
                 >
                   Contact
                 </TabsTrigger>
@@ -530,7 +537,7 @@ export default function VendorStorefront() {
                       </div>
                       <Button
                         variant="outline"
-                        className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white border-0 hover:from-emerald-600 hover:to-blue-600"
+                        className="bg-gradient-to-r from-purple-600 to-blue-600 border-0 text-white"
                         onClick={() => document.getElementById("review-form")?.scrollIntoView({ behavior: "smooth" })}
                       >
                         Write a Review
@@ -590,13 +597,13 @@ export default function VendorStorefront() {
                           placeholder="Tell others about your experience with this store..."
                           value={reviewText}
                           onChange={(e) => setReviewText(e.target.value)}
-                          className="min-h-[100px] resize-none"
+                          className="min-h-[100px] resize-none border-gray-300"
                         />
                       </div>
                       <Button
                         onClick={handleSubmitReview}
                         disabled={!reviewText.trim() || reviewRating === 0}
-                        className="bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white border-0"
+                        className="bg-gradient-to-r from-purple-600 to-blue-600 text-white border-0"
                       >
                         <Send className="h-4 w-4 mr-2" />
                         Submit Review
@@ -606,28 +613,71 @@ export default function VendorStorefront() {
                 </Card>
 
                 {/* Reviews List */}
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   {mockReviews.map((review) => (
-                    <Card key={review.id} className="shadow-sm hover:shadow-md transition-shadow">
-                      <CardContent className="p-6">
-                        <div className="flex items-start space-x-4">
-                          <Avatar className="h-10 w-10 ring-2 ring-emerald-100">
-                            <AvatarImage src={review.user.avatar || "/placeholder.svg"} alt={review.user.name} />
-                            <AvatarFallback className="bg-gradient-to-br from-emerald-500 to-blue-500 text-white">
-                              {review.user.name
-                                .split(" ")
-                                .map((n) => n[0])
-                                .join("")}
-                            </AvatarFallback>
-                          </Avatar>
-                          <div className="flex-1 space-y-3">
+                    <Card key={review.id} className="shadow-sm hover:shadow-lg transition-all duration-300 border-none bg-gradient-to-br from-white to-gray-50/50">
+                      <CardContent className="p-3 sm:p-4 lg:p-6">
+                        <div className="flex flex-col sm:flex-row sm:items-start space-y-3 sm:space-y-0 sm:space-x-4">
+                          <div className="flex items-start space-x-3 sm:space-x-0">
+                            <Avatar className="h-8 w-8 sm:h-10 sm:w-10 ring-2 ring-purple-100 flex-shrink-0">
+                              <AvatarImage src={review.user.avatar || "/placeholder.svg"} alt={review.user.name} />
+                              <AvatarFallback className="bg-gradient-to-br from-purple-500 to-blue-500 text-white text-xs sm:text-sm">
+                                {review.user.name
+                                  .split(" ")
+                                  .map((n) => n[0])
+                                  .join("")}
+                              </AvatarFallback>
+                            </Avatar>
+                            
+                            {/* Mobile Header Info */}
+                            <div className="flex-1 sm:hidden">
+                              <div className="flex items-center justify-between mb-2">
+                                <div className="flex items-center space-x-2">
+                                  <span className="font-semibold text-gray-900 text-sm">{review.user.name}</span>
+                                  {review.user.verified && (
+                                    <Badge
+                                      variant="secondary"
+                                      className="bg-green-100 text-green-700 text-xs px-1.5 py-0.5"
+                                    >
+                                      <Verified className="h-2.5 w-2.5 mr-1" />
+                                      Verified
+                                    </Badge>
+                                  )}
+                                </div>
+                                <Button variant="ghost" size="icon" className="h-6 w-6">
+                                  <MoreHorizontal className="h-3 w-3" />
+                                </Button>
+                              </div>
+                              
+                              <div className="flex flex-wrap items-center gap-2 mb-2">
+                                <div className="flex">
+                                  {[1, 2, 3, 4, 5].map((star) => (
+                                    <Star
+                                      key={star}
+                                      className={`h-3 w-3 ${
+                                        star <= review.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"
+                                      }`}
+                                    />
+                                  ))}
+                                </div>
+                                <span className="text-xs text-gray-500">{review.date}</span>
+                              </div>
+                              
+                              <Badge variant="outline" className="text-xs border-purple-200 text-purple-600 mb-2">
+                                {review.productName}
+                              </Badge>
+                            </div>
+                          </div>
+                          
+                          {/* Desktop Layout */}
+                          <div className="flex-1 space-y-2 sm:space-y-3 hidden sm:block">
                             <div className="flex items-center justify-between">
                               <div className="flex items-center space-x-2">
-                                <span className="font-semibold text-foreground">{review.user.name}</span>
+                                <span className="font-semibold text-gray-900">{review.user.name}</span>
                                 {review.user.verified && (
                                   <Badge
                                     variant="secondary"
-                                    className="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300"
+                                    className="bg-green-100 text-green-700"
                                   >
                                     <Verified className="h-3 w-3 mr-1" />
                                     Verified
@@ -639,7 +689,7 @@ export default function VendorStorefront() {
                               </Button>
                             </div>
 
-                            <div className="flex items-center space-x-3">
+                            <div className="flex flex-wrap items-center gap-3">
                               <div className="flex">
                                 {[1, 2, 3, 4, 5].map((star) => (
                                   <Star
@@ -650,37 +700,45 @@ export default function VendorStorefront() {
                                   />
                                 ))}
                               </div>
-                              <span className="text-sm text-muted-foreground">{review.date}</span>
-                              <Badge variant="outline" className="text-xs">
+                              <span className="text-sm text-gray-500">{review.date}</span>
+                              <Badge variant="outline" className="text-xs border-purple-200 text-purple-600">
                                 {review.productName}
                               </Badge>
                             </div>
+                          </div>
+                        </div>
+                        
+                        {/* Review Content */}
+                        <div className="mt-3 space-y-3">
+                          <p className="text-gray-700 leading-relaxed text-sm sm:text-base">{review.content}</p>
 
-                            <p className="text-muted-foreground leading-relaxed">{review.content}</p>
+                          {review.images.length > 0 && (
+                            <div className="flex space-x-2 overflow-x-auto pb-2">
+                              {review.images.map((image, index) => (
+                                <img
+                                  key={index}
+                                  src={image || "/placeholder.svg"}
+                                  alt="Review"
+                                  className="w-12 h-12 sm:w-16 sm:h-16 object-cover rounded-lg border border-gray-200 flex-shrink-0"
+                                />
+                              ))}
+                            </div>
+                          )}
 
-                            {review.images.length > 0 && (
-                              <div className="flex space-x-2">
-                                {review.images.map((image, index) => (
-                                  <img
-                                    key={index}
-                                    src={image || "/placeholder.svg"}
-                                    alt="Review"
-                                    className="w-16 h-16 object-cover rounded-lg border"
-                                  />
-                                ))}
-                              </div>
-                            )}
-
-                            <div className="flex items-center space-x-4 pt-2">
-                              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
-                                <ThumbsUp className="h-4 w-4 mr-1" />
-                                Helpful ({review.helpful})
+                          <div className="flex items-center justify-between pt-2 border-t border-gray-100">
+                            <div className="flex items-center space-x-2 sm:space-x-4">
+                              <Button variant="ghost" size="sm" className="text-gray-600 hover:text-purple-600 hover:bg-purple-50 text-xs sm:text-sm px-2 sm:px-3">
+                                <ThumbsUp className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
+                                <span className="hidden sm:inline">Helpful </span>({review.helpful})
                               </Button>
-                              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
-                                <MessageCircle className="h-4 w-4 mr-1" />
+                              <Button variant="ghost" size="sm" className="text-gray-600 hover:text-purple-600 hover:bg-purple-50 text-xs sm:text-sm px-2 sm:px-3">
+                                <MessageCircle className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
                                 Reply
                               </Button>
                             </div>
+                            
+                            {/* Mobile timestamp for better UX */}
+                            <span className="text-xs text-gray-400 sm:hidden">{review.date}</span>
                           </div>
                         </div>
                       </CardContent>
@@ -690,7 +748,7 @@ export default function VendorStorefront() {
 
                 {/* Load More Reviews */}
                 <div className="text-center">
-                  <Button variant="outline" className="hover:bg-emerald-50 hover:border-emerald-200 bg-transparent">
+                  <Button variant="outline" className="border-violet-300 text-violet-600 hover:bg-violet-50 hover:border-violet-200 bg-transparent">
                     Load More Reviews
                   </Button>
                 </div>

@@ -41,46 +41,46 @@ const UserWishlist = () => {
 
   return (
     <Card className="bg-white shadow-lg border border-gray-200">
-      <CardHeader className="flex flex-row items-center justify-between">
+      <CardHeader className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0 pb-4">
         <div className="flex items-center space-x-2">
-          <Heart className="w-5 h-5 text-red-500" />
-          <CardTitle>Wishlist</CardTitle>
-          <Badge variant="secondary">{wishlistItems.length} items</Badge>
+          <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-red-500 flex-shrink-0" />
+          <CardTitle className="text-base sm:text-lg">Wishlist</CardTitle>
+          <Badge variant="secondary" className="text-xs px-2 py-1">{wishlistItems.length} items</Badge>
         </div>
-        <Button variant="outline" size="sm" className="text-gray-600 hover:text-gray-900 borde border-gray-300">
+        <Button variant="outline" size="sm" className="text-gray-600 hover:text-gray-900 border border-gray-300 text-xs sm:text-sm px-3 py-1 w-full sm:w-auto">
           View All
         </Button>
       </CardHeader>
-      <CardContent>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <CardContent className="pt-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
           {wishlistItems.map((item) => (
-            <div key={item.id} className="group relative bg-gray-50 rounded-lg p-4 hover:bg-gray-100 transition-colors">
-              <div className="flex space-x-4">
-                <div className="relative">
+            <div key={item.id} className="group relative bg-gray-50 rounded-lg p-3 sm:p-4 hover:bg-gray-100 transition-colors min-h-[140px] sm:min-h-[160px]">
+              <div className="flex space-x-3 sm:space-x-4 h-full">
+                <div className="relative flex-shrink-0">
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="w-16 h-16 rounded-lg object-cover"
+                    className="w-16 h-16 sm:w-20 sm:h-20 rounded-lg object-cover"
                   />
                   {item.discount && (
-                    <Badge className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1 py-0">
+                    <Badge className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 bg-red-500 text-white text-xs px-1 py-0.5">
                       {item.discount}
                     </Badge>
                   )}
                 </div>
-                <div className="flex-1 min-w-0">
+                <div className="flex-1 min-w-0 flex flex-col justify-between">
                   <div className="flex items-start justify-between">
-                    <div>
-                      <h3 className="font-medium text-gray-900 text-sm truncate">{item.name}</h3>
-                      <div className="flex items-center space-x-2 mt-1">
-                        <span className="text-lg font-semibold text-gray-900">{item.price}</span>
+                    <div className="flex-1 min-w-0 pr-2">
+                      <h3 className="font-medium text-gray-900 text-sm sm:text-base line-clamp-2 leading-tight mb-1">{item.name}</h3>
+                      <div className="flex flex-wrap items-center gap-1 sm:gap-2 mb-2">
+                        <span className="text-base sm:text-lg font-semibold text-gray-900">{item.price}</span>
                         {item.originalPrice && (
-                          <span className="text-sm text-gray-500 line-through">{item.originalPrice}</span>
+                          <span className="text-xs sm:text-sm text-gray-500 line-through">{item.originalPrice}</span>
                         )}
                       </div>
                       <Badge 
                         variant={item.inStock ? "secondary" : "destructive"} 
-                        className="mt-2 text-xs"
+                        className="text-xs px-2 py-0.5 w-fit"
                       >
                         {item.inStock ? "In Stock" : "Out of Stock"}
                       </Badge>
@@ -88,17 +88,18 @@ const UserWishlist = () => {
                     <Button 
                       size="sm" 
                       variant="ghost" 
-                      className="h-6 w-6 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="h-6 w-6 p-0 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0"
                     >
-                      <X className="w-4 h-4" />
+                      <X className="w-3 h-3 sm:w-4 sm:h-4" />
                     </Button>
                   </div>
-                  <div className="flex space-x-2 mt-3 ">
-                    <Button size="sm" className="flex-1 h-8 bg-black  rounded-lg p-1 text-white" disabled={!item.inStock}>
+                  <div className="flex space-x-2 mt-auto pt-2">
+                    <Button size="sm" className="flex-1 h-7 sm:h-8 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 rounded-lg text-white text-xs" disabled={!item.inStock}>
                       <ShoppingCart className="w-3 h-3 mr-1" />
-                      Add to Cart
+                      <span className="hidden sm:inline">Add to Cart</span>
+                      <span className="sm:hidden">Add</span>
                     </Button>
-                    <Button size="sm" variant="outline" className="h-8 px-2 border border-gray-300 text-gray-600 hover:text-gray-900">
+                    <Button size="sm" variant="outline" className="h-7 sm:h-8 px-2 border border-gray-300 text-gray-600 hover:text-gray-900 hover:bg-gray-50">
                       <Eye className="w-3 h-3" />
                     </Button>
                   </div>

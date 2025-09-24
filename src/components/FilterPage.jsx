@@ -316,20 +316,20 @@ export default function FilterPage() {
             </div>
 
             {/* Product Grid */}
-        <div className="container mx-auto px-4 py-8">
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
+        <div className="container mx-auto px-2 sm:px-4 py-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3 gap-2 sm:gap-4 md:gap-6">
         {products.map((product) => (
           <Card key={product.id} className="group cursor-pointer hover:shadow-lg transition-all duration-300 border-none shadow-sm shadow-gray-200 hover:shadow-gray-300">
-            <CardContent className="p-3 sm:p-4">
-              <div className="relative mb-3 sm:mb-4">
+            <CardContent className="p-2 sm:p-3 md:p-4">
+              <div className="relative mb-2 sm:mb-3 md:mb-4">
                 <img
                   src={product.image || "/placeholder.svg"}
                   alt={product.name}
-                  className="w-full h-32 sm:h-40 md:h-48 object-cover rounded-md group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-28 sm:h-36 md:h-48 object-cover rounded-md group-hover:scale-105 transition-transform duration-300"
                 />
                 {product.badge && (
                   <Badge
-                    className={`absolute top-2 left-2 text-xs px-2 py-1 ${
+                    className={`absolute top-1 left-1 text-xs px-1.5 py-0.5 sm:px-2 sm:py-1 ${
                       product.badge === "Sale"
                         ? "bg-red-500 text-white"
                         : product.badge === "New"
@@ -344,16 +344,16 @@ export default function FilterPage() {
                 )}
               </div>
               
-              <h3 className="font-medium text-gray-900 mb-2 text-sm sm:text-base line-clamp-2 min-h-[2.5rem] sm:min-h-[3rem]">
+              <h3 className="font-medium text-gray-900 mb-1 sm:mb-2 text-xs sm:text-sm md:text-base line-clamp-2 min-h-[2rem] sm:min-h-[2.5rem] md:min-h-[3rem]">
                 {product.name}
               </h3>
               
-              <div className="flex items-center mb-2 sm:mb-3">
+              <div className="flex items-center mb-1 sm:mb-2 md:mb-3">
                 <div className="flex items-center">
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
-                      className={`h-3 w-3 sm:h-4 sm:w-4 ${
+                      className={`h-2.5 w-2.5 sm:h-3 sm:w-3 md:h-4 md:w-4 ${
                         i < Math.floor(product.rating) 
                           ? "fill-yellow-400 text-yellow-400" 
                           : "text-gray-300"
@@ -366,9 +366,9 @@ export default function FilterPage() {
                 </span>
               </div>
               
-              <div className="space-y-2 sm:space-y-3">
-                <div className="flex items-center justify-between sm:justify-start sm:space-x-2">
-                  <span className="text-base sm:text-lg font-bold text-gray-900">
+              <div className="space-y-1 sm:space-y-2 md:space-y-3">
+                <div className="flex items-center flex-wrap gap-1 sm:gap-2">
+                  <span className="text-sm sm:text-base md:text-lg font-bold text-gray-900">
                     ${product.price}
                   </span>
                   {product.originalPrice && (
@@ -380,7 +380,7 @@ export default function FilterPage() {
                 
                 <Button 
                   size="sm" 
-                  className="w-full bg-purple-600 text-white font-bold shadow-lg shadow-purple-300 hover:bg-purple-500 transition-colors text-xs sm:text-sm py-1.5 sm:py-2"
+                  className="w-full bg-purple-600 text-white font-bold shadow-lg shadow-purple-300 hover:bg-purple-500 transition-colors text-xs sm:text-sm py-1 sm:py-1.5 md:py-2 px-2"
                 >
                   Add to Cart
                 </Button>

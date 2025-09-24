@@ -145,26 +145,75 @@ const Cart = () => {
                 {cart.map((item) => (
                   <Card
                     key={item.id}
-                    className="p-4 border-0 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+                    className="p-3 sm:p-4 border-0 rounded-lg shadow-sm hover:shadow-md transition-shadow"
                   >
-                    <div className="flex items-center gap-4">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
                       <img
                         src={item.image}
                         alt={item.name}
-                        className="w-20 h-20 object-cover rounded-lg"
+                        className="w-full h-32 sm:w-20 sm:h-20 object-cover rounded-lg flex-shrink-0"
                       />
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-lg">{item.name}</h4>
-                        <p className="text-gray-600 text-sm">
+                      <div className="flex-1 min-w-0 space-y-2 sm:space-y-1">
+                        <h4 className="font-semibold text-base sm:text-lg text-gray-900 line-clamp-2">{item.name}</h4>
+                        <p className="text-gray-600 text-xs sm:text-sm line-clamp-2">
                           {item.description}
                         </p>
                         <Badge
                           variant="secondary"
-                          className="mt-3 border border-gray-200 rounded-full  bg-gradient-to-br from-purple-600 to-blue-600 text-white opacity-70"
+                          className="mt-2 border border-gray-200 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 text-white opacity-70 text-xs px-2 py-1 w-fit"
                         >
                           {item.category}
                         </Badge>
-                        <div className="flex items-center gap-2 mt-3">
+                        
+                        {/* Mobile quantity and price section */}
+                        <div className="flex items-center justify-between sm:hidden pt-2">
+                          <div className="flex items-center gap-2">
+                            <Button
+                              variant="outline"
+                              size="icon"
+                              onClick={() =>
+                                updateQuantity(item.id, item.quantity - 1)
+                              }
+                              className="h-8 w-8 text-white hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed border-0 bg-gradient-to-br from-purple-600 to-blue-600"
+                            >
+                              <Minus className="h-3 w-3" />
+                            </Button>
+                            <span className="px-2 py-1 border rounded min-w-[40px] text-center text-gray-700 text-sm font-medium">
+                              {item.quantity}
+                            </span>
+                            <Button
+                              variant="outline"
+                              size="icon"
+                              onClick={() =>
+                                updateQuantity(item.id, item.quantity + 1)
+                              }
+                              className="h-8 w-8 text-white hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed border-0 bg-gradient-to-br from-purple-600 to-blue-600"
+                            >
+                              <Plus className="h-3 w-3" />
+                            </Button>
+                          </div>
+                          
+                          <div className="text-right">
+                            <p className="text-base font-bold text-gray-900">
+                              ${(item.price * item.quantity).toFixed(2)}
+                            </p>
+                            <p className="text-xs text-gray-500">
+                              ${item.price.toFixed(2)} × {item.quantity}
+                            </p>
+                          </div>
+                          
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={() => removeFromCart(item.id)}
+                            className="h-8 w-8 text-red-500 hover:text-red-700 hover:bg-red-50"
+                          >
+                            <Trash2 className="h-3 w-3" />
+                          </Button>
+                        </div>
+                        
+                        {/* Desktop quantity controls */}
+                        <div className="hidden sm:flex items-center gap-2 mt-3">
                           <Button
                             variant="outline"
                             size="icon"
@@ -175,7 +224,7 @@ const Cart = () => {
                           >
                             <Minus className="h-4 w-4" />
                           </Button>
-                          <span className="px-4 py-2 border rounded min-w-[30px] text-center text-gray-400">
+                          <span className="px-4 py-2 border rounded min-w-[50px] text-center text-gray-700 font-medium">
                             {item.quantity}
                           </span>
                           <Button
@@ -184,25 +233,27 @@ const Cart = () => {
                             onClick={() =>
                               updateQuantity(item.id, item.quantity + 1)
                             }
-                            className="text-white hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed order-0 bg-gradient-to-br from-purple-600 to-blue-600"
+                            className="text-white hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed border-0 bg-gradient-to-br from-purple-600 to-blue-600"
                           >
                             <Plus className="h-4 w-4" />
                           </Button>
                         </div>
                       </div>
-                      <div className="text-right">
-                        <p className="text-lg font-semibold text-black">
+                      
+                      {/* Desktop price and remove */}
+                      <div className="hidden sm:block text-right flex-shrink-0">
+                        <p className="text-lg font-semibold text-gray-900">
                           ${(item.price * item.quantity).toFixed(2)}
                         </p>
-                        <p className="text-sm font-medium text-gray-400 pt-2">
-                          ${item.price.toFixed(2)} X {item.quantity}items{" "}
+                        <p className="text-sm font-medium text-gray-500 pt-1">
+                          ${item.price.toFixed(2)} × {item.quantity} items
                         </p>
 
                         <Button
                           variant="ghost"
                           size="icon"
                           onClick={() => removeFromCart(item.id)}
-                          className="text-red-500 hover:text-red-700 mt-2"
+                          className="text-red-500 hover:text-red-700 hover:bg-red-50 mt-2"
                         >
                           <Trash2 className="h-4 w-4" />
                         </Button>
@@ -286,9 +337,6 @@ const Cart = () => {
               {/* related products */}
               <div className="lg:col-span-3">
                 <Card className="p-6 bg-gray-50 border-0 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                  <h3 className="text-xl font-semibold mb-4">
-                    Related Products
-                  </h3>
                   <div className="">
                     <Carousel
                       opts={{
@@ -296,41 +344,42 @@ const Cart = () => {
                       }}
                       className="w-full"
                     >
-                        <div className="relative">
-                        <div className="absolute right-9 flex gap-2">
-                          <CarouselPrevious />
-                          <CarouselNext />
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className="text-xl font-semibold">Related Products</h3>
+                        <div className="flex gap-2">
+                          <CarouselPrevious className="static translate-y-0" />
+                          <CarouselNext className="static translate-y-0" />
                         </div>
                       </div>
-                      <CarouselContent>
+                      <CarouselContent className="-ml-2 sm:-ml-4">
                         {cart.map((product) => (
                           <CarouselItem
                             key={product.id}
-                            className="pl-4 basis-1/1 sm:basis-1/3 lg:basis-1/4  mb-15"
+                            className="pl-2 sm:pl-4 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
                           >
-                            <Card className="group bg-white cursor-pointer hover:shadow-lg mt-8  transition-shadow border-none shadow-sm shadow-gray-400 h-full min-h-[400px] w-full ">
-                              <CardContent className="p-4">
-                                <div className="relative mb-4">
+                            <Card className="group bg-white cursor-pointer hover:shadow-lg transition-shadow border-none shadow-sm shadow-gray-400 h-full">
+                              <CardContent className="p-3 sm:p-4">
+                                <div className="relative mb-3">
                                   <img
                                     src={product.image || "/placeholder.svg"}
                                     alt={product.name}
-                                    className="w-full h-48 object-cover rounded-lg group-hover:scale-105 transition-transform"
+                                    className="w-full h-40 sm:h-44 lg:h-48 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
                                   />
                                   {product.badge && (
                                     <Badge
-                                      className={`absolute top-2 left-2 ${
+                                      className={`absolute top-2 left-2 text-xs px-2 py-1 ${
                                         product.badge === "Sale"
-                                          ? "bg-red-500"
+                                          ? "bg-red-500 text-white"
                                           : product.badge === "New"
-                                          ? "bg-green-500"
-                                          : "bg-blue-500"
+                                          ? "bg-green-500 text-white"
+                                          : "bg-blue-500 text-white"
                                       }`}
                                     >
                                       {product.badge}
                                     </Badge>
                                   )}
                                 </div>
-                                <h3 className="font-semibold text-gray-900 mb-2 text-base line-clamp-2">
+                                <h3 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base line-clamp-2 min-h-[2.5rem] sm:min-h-[3rem]">
                                   {product.name}
                                 </h3>
                                 <div className="flex items-center mb-3">
@@ -338,7 +387,7 @@ const Cart = () => {
                                     {[...Array(5)].map((_, i) => (
                                       <Star
                                         key={i}
-                                        className={`h-3 w-3 ${
+                                        className={`h-3 w-3 sm:h-4 sm:w-4 ${
                                           i < Math.floor(product.rating)
                                             ? "fill-yellow-400 text-yellow-400"
                                             : "text-gray-300"
@@ -346,25 +395,28 @@ const Cart = () => {
                                       />
                                     ))}
                                   </div>
-                                  <span className="text-sm text-gray-600 ml-1">
+                                  <span className="text-xs sm:text-sm text-gray-600 ml-1">
                                     ({product.reviews})
                                   </span>
                                 </div>
-                                <div className="flex items-center justify-between mt-auto">
-                                  <div className="flex items-center space-x-2">
-                                    <span className="text-lg font-bold text-gray-900">
-                                      ${product.price}
-                                    </span>
-                                    {product.originalPrice && (
-                                      <span className="text-sm text-gray-500 line-through">
-                                        ${product.originalPrice}
+                                <div className="space-y-3">
+                                  <div className="flex items-center justify-between">
+                                    <div className="flex items-center space-x-2">
+                                      <span className="text-base sm:text-lg font-bold text-gray-900">
+                                        ${product.price}
                                       </span>
-                                    )}
+                                      {product.originalPrice && (
+                                        <span className="text-sm text-gray-500 line-through">
+                                          ${product.originalPrice}
+                                        </span>
+                                      )}
+                                    </div>
                                   </div>
                                   <Button
                                     size="sm"
-                                    className="bg-purple-600 text-white font-bold shadow-lg shadow-purple-300 hover:bg-purple-400 px-4 py-1 text-xs"
+                                    className="w-full bg-purple-600 text-white font-bold shadow-lg shadow-purple-300 hover:bg-purple-400 py-2 text-sm"
                                   >
+                                    <ShoppingCart className="w-4 h-4 mr-2" />
                                     Add to Cart
                                   </Button>
                                 </div>
@@ -373,7 +425,6 @@ const Cart = () => {
                           </CarouselItem>
                         ))}
                       </CarouselContent>
-          
                     </Carousel>
                   </div>
                 </Card>

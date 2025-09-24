@@ -135,9 +135,9 @@ export default function SellerPage() {
           </div>
 
           <div className="container mx-auto px-4 relative -mt-20">
-            <div className="bg-white rounded-lg shadow-lg p-6">
+            <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6">
               <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6">
-                <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-lg">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-4 border-white shadow-lg flex-shrink-0">
                   <img
                     src={vendor.logo}
                     alt={vendor.name}
@@ -145,26 +145,26 @@ export default function SellerPage() {
                   />
                 </div>
 
-                <div className="flex-1">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <h1 className="text-3xl font-bold text-gray-900">
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-2 mb-2">
+                    <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 truncate">
                       {vendor.name}
                     </h1>
                     <Badge
                       variant="secondary"
-                      className="bg-green-100 text-green-800"
+                      className="bg-green-100 text-green-800 w-fit"
                     >
                       Verified
                     </Badge>
                   </div>
 
-                  <div className="flex items-center space-x-4 mb-3">
+                  <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 mb-3">
                     <div className="flex items-center">
                       <div className="flex text-yellow-400 mr-1">
                         {[...Array(5)].map((_, i) => (
                           <Star
                             key={i}
-                            className={`w-4 h-4 ${
+                            className={`w-3 h-3 sm:w-4 sm:h-4 ${
                               i < Math.floor(vendor.rating)
                                 ? "fill-current"
                                 : ""
@@ -172,45 +172,44 @@ export default function SellerPage() {
                           />
                         ))}
                       </div>
-                      <span className="text-sm text-gray-600">
+                      <span className="text-xs sm:text-sm text-gray-600">
                         {vendor.rating} ({vendor.reviewCount} reviews)
                       </span>
                     </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <Store className="w-4 h-4 mr-1" />
+                    <div className="flex items-center text-xs sm:text-sm text-gray-600">
+                      <Store className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
                       Since {vendor.joinedDate}
                     </div>
                   </div>
 
-                  <p className="text-gray-600 mb-4">{vendor.description}</p>
+                  <p className="text-sm sm:text-base text-gray-600 mb-4 line-clamp-3">{vendor.description}</p>
 
-
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 text-xs sm:text-sm text-gray-600">
                     <div className="flex items-center">
-                      <MapPin className="w-4 h-4 mr-2" />
-                      {vendor.location}
+                      <MapPin className="w-3 h-3 sm:w-4 sm:h-4 mr-2 flex-shrink-0" />
+                      <span className="truncate">{vendor.location}</span>
                     </div>
                     <div className="flex items-center">
-                      <Phone className="w-4 h-4 mr-2" />
-                      {vendor.phone}
+                      <Phone className="w-3 h-3 sm:w-4 sm:h-4 mr-2 flex-shrink-0" />
+                      <span className="truncate">{vendor.phone}</span>
                     </div>
                     <div className="flex items-center">
-                      <Mail className="w-4 h-4 mr-2" />
-                      {vendor.email}
+                      <Mail className="w-3 h-3 sm:w-4 sm:h-4 mr-2 flex-shrink-0" />
+                      <span className="truncate">{vendor.email}</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex flex-col space-y-2">
-                  <button className="flex bg-gradient-to-r from-purple-600 to-blue-600 hover:bg-purple-700 text-white justify-center items-center px-4 py-2 rounded-lg shadow hover:shadow-lg transition-shadow">
-                    <Heart className="w-4 h-4 mr-2 text-white" />
+                <div className="flex flex-col sm:flex-row lg:flex-col space-y-2 sm:space-y-0 sm:space-x-2 lg:space-x-0 lg:space-y-2 w-full sm:w-auto">
+                  <button className="flex bg-gradient-to-r from-purple-600 to-blue-600 hover:bg-purple-700 text-white justify-center items-center px-3 sm:px-4 py-2 rounded-lg shadow hover:shadow-lg transition-shadow text-sm">
+                    <Heart className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-white" />
                     Follow Store
                   </button>
                   <Button
                     variant="outline"
-                    className="flex items-center justify-center bg-white text-gray-800 hover:bg-gray-100 border border-gray-300 px-4 py-2 rounded-lg shadow hover:shadow-md transition-shadow"
+                    className="flex items-center justify-center bg-white text-gray-800 hover:bg-gray-100 border border-gray-300 px-3 sm:px-4 py-2 rounded-lg shadow hover:shadow-md transition-shadow text-sm"
                   >
-                    <Share2 className="w-4 h-4 mr-2" />
+                    <Share2 className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                     Share Store
                   </Button>
                 </div>
@@ -220,49 +219,49 @@ export default function SellerPage() {
         </div>
 
         <div className="container mx-auto px-4 py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <Card className="hover:shadow-lg transition-shadow border-0 py-9">
-              <CardContent className="p-4 text-center">
-                <div className="text-2xl font-bold text-blue-600">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-8">
+            <Card className="hover:shadow-lg transition-shadow border-0 py-6 sm:py-9">
+              <CardContent className="p-3 sm:p-4 text-center">
+                <div className="text-xl sm:text-2xl font-bold text-blue-600">
                   {vendor.totalProducts}
                 </div>
-                <div className="text-sm text-gray-600">Total Products</div>
+                <div className="text-xs sm:text-sm text-gray-600">Total Products</div>
               </CardContent>
             </Card>
-            <Card className="hover:shadow-lg transition-shadow border-0 py-9">
-              <CardContent className="p-4 text-center">
-                <div className="text-2xl font-bold text-green-600">
+            <Card className="hover:shadow-lg transition-shadow border-0 py-6 sm:py-9">
+              <CardContent className="p-3 sm:p-4 text-center">
+                <div className="text-xl sm:text-2xl font-bold text-green-600">
                   {vendor.rating}
                 </div>
-                <div className="text-sm text-gray-600">Store Rating</div>
+                <div className="text-xs sm:text-sm text-gray-600">Store Rating</div>
               </CardContent>
             </Card>
-            <Card className="hover:shadow-lg transition-shadow border-0 py-9">
-              <CardContent className="p-4 text-center">
-                <div className="text-2xl font-bold text-purple-600">
+            <Card className="hover:shadow-lg transition-shadow border-0 py-6 sm:py-9">
+              <CardContent className="p-3 sm:p-4 text-center">
+                <div className="text-xl sm:text-2xl font-bold text-purple-600">
                   {vendor.reviewCount}
                 </div>
-                <div className="text-sm text-gray-600">Reviews</div>
+                <div className="text-xs sm:text-sm text-gray-600">Reviews</div>
               </CardContent>
             </Card>
-            <Card className="hover:shadow-lg transition-shadow border-0 py-9">
-              <CardContent className="p-4 text-center">
-                <div className="text-2xl font-bold text-orange-600">5+</div>
-                <div className="text-sm text-gray-600">Years Active</div>
+            <Card className="hover:shadow-lg transition-shadow border-0 py-6 sm:py-9">
+              <CardContent className="p-3 sm:p-4 text-center">
+                <div className="text-xl sm:text-2xl font-bold text-orange-600">5+</div>
+                <div className="text-xs sm:text-sm text-gray-600">Years Active</div>
               </CardContent>
             </Card>
           </div>
 
           <div className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
               Shop by Category
             </h2>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
               {vendor.categories.map((category, index) => (
                 <Badge
                   key={index}
                   variant="outline"
-                  className="px-4 py-2 cursor-pointer hover:bg-purple-300 border-1 border-gray-300 text-gray-700 hover:text-purple-600 transition-colors"
+                  className="px-2 sm:px-4 py-1 sm:py-2 cursor-pointer hover:bg-purple-300 border-1 border-gray-300 text-gray-700 hover:text-purple-600 transition-colors text-xs sm:text-sm"
                 >
                   {category}
                 </Badge>
@@ -271,47 +270,47 @@ export default function SellerPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">
               Featured Products
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
               {products.map((product) => (
                 <Card
                   key={product.id}
-                  className="hover:shadow-lg transition-shadow border-0 py-9"
+                  className="hover:shadow-lg transition-shadow border-0 group"
                 >
-                  <CardContent className="p-2 py-0 rounded-full">
+                  <CardContent className="p-2 sm:p-3 lg:p-4">
                     <div className="relative">
                       <img
                         src={product.image}
                         alt={product.name}
-                        className="w-full h-48 object-cover rounded-t-lg"
+                        className="w-full h-32 sm:h-40 lg:h-48 object-cover rounded-t-lg group-hover:scale-105 transition-transform duration-300"
                       />
                       {!product.inStock && (
                         <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center rounded-sm">
-                          <span className="text-white font-semibold">
+                          <span className="text-white font-semibold text-xs sm:text-sm">
                             Out of Stock
                           </span>
                         </div>
                       )}
                       {product.originalPrice && (
-                        <Badge className="absolute top-2 left-2 bg-red-500">
+                        <Badge className="absolute top-1 left-1 sm:top-2 sm:left-2 bg-red-500 text-xs px-1.5 py-0.5 sm:px-2 sm:py-1">
                           Sale
                         </Badge>
                       )}
                     </div>
 
-                    <div className="p-4">
-                      <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2">
+                    <div className="p-2 sm:p-3 lg:p-4">
+                      <h3 className="font-semibold text-gray-900 mb-1 sm:mb-2 line-clamp-2 text-xs sm:text-sm lg:text-base">
                         {product.name}
                       </h3>
 
-                      <div className="flex items-center mb-2">
-                        <div className="flex text-yellow-400 mr-2">
+                      <div className="flex items-center mb-1 sm:mb-2">
+                        <div className="flex text-yellow-400 mr-1 sm:mr-2">
                           {[...Array(5)].map((_, i) => (
                             <Star
                               key={i}
-                              className={`w-3 h-3 ${
+                              className={`w-2.5 h-2.5 sm:w-3 sm:h-3 ${
                                 i < Math.floor(product.rating)
                                   ? "fill-current"
                                   : ""
@@ -324,13 +323,13 @@ export default function SellerPage() {
                         </span>
                       </div>
 
-                      <div className="flex items-center justify-between mb-3">
-                        <div>
-                          <span className="text-lg font-bold text-gray-900">
+                      <div className="flex items-center justify-between mb-2 sm:mb-3">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-2">
+                          <span className="text-sm sm:text-base lg:text-lg font-bold text-gray-900">
                             {product.price}
                           </span>
                           {product.originalPrice && (
-                            <span className="text-sm text-gray-500 line-through ml-2">
+                            <span className="text-xs sm:text-sm text-gray-500 line-through">
                               {product.originalPrice}
                             </span>
                           )}
@@ -338,11 +337,11 @@ export default function SellerPage() {
                       </div>
 
                       <Button
-                        className="w-full bg-purple-600 hover:bg-purple-700 text-white "
+                        className="w-full bg-purple-600 hover:bg-purple-700 text-white text-xs sm:text-sm py-1 sm:py-2"
                         disabled={!product.inStock}
                         variant={product.inStock ? "default" : "secondary"}
                       >
-                        <ShoppingCart className="w-4 h-4 mr-2" />
+                        <ShoppingCart className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                         {product.inStock ? "Add to Cart" : "Out of Stock"}
                       </Button>
                     </div>
@@ -351,7 +350,7 @@ export default function SellerPage() {
               ))}
             </div>
 
-                        {/* Pagination */}
+            {/* Pagination */}
             <div className="flex items-center justify-center mt-12">
               <div className="flex items-center space-x-2">
                 <Button variant="outline" size="sm" disabled>
@@ -369,6 +368,148 @@ export default function SellerPage() {
                 <Button variant="outline" size="sm">
                   Next
                 </Button>
+              </div>
+            </div>
+
+            {/* Customer Reviews Section */}
+            <div className="mt-16">
+              <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6">
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">
+                  Customer Reviews
+                </h2>
+                
+                {/* Reviews Summary */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                  <div className="lg:col-span-1">
+                    <div className="text-center p-6 bg-gradient-to-br from-purple-50 to-blue-50 rounded-lg">
+                      <div className="text-4xl sm:text-5xl font-bold text-purple-600 mb-2">
+                        {vendor.rating}
+                      </div>
+                      <div className="flex justify-center mb-2">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className={`w-5 h-5 ${
+                              i < Math.floor(vendor.rating)
+                                ? "fill-yellow-400 text-yellow-400"
+                                : "text-gray-300"
+                            }`}
+                          />
+                        ))}
+                      </div>
+                      <p className="text-gray-600 text-sm">
+                        Based on {vendor.reviewCount} reviews
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="lg:col-span-2">
+                    <div className="space-y-3">
+                      {[5, 4, 3, 2, 1].map((rating) => {
+                        const percentage = rating === 5 ? 75 : rating === 4 ? 20 : rating === 3 ? 3 : rating === 2 ? 1 : 1;
+                        return (
+                          <div key={rating} className="flex items-center space-x-3">
+                            <span className="text-sm text-gray-600 w-8">{rating}</span>
+                            <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                            <div className="flex-1 bg-gray-200 rounded-full h-2">
+                              <div 
+                                className="bg-gradient-to-r from-purple-600 to-blue-600 h-2 rounded-full transition-all duration-300"
+                                style={{ width: `${percentage}%` }}
+                              ></div>
+                            </div>
+                            <span className="text-sm text-gray-600 w-12">{percentage}%</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Individual Reviews */}
+                <div className="space-y-6">
+                  {[
+                    {
+                      id: 1,
+                      name: "Sarah Johnson",
+                      rating: 5,
+                      date: "2 weeks ago",
+                      review: "Excellent service and fast delivery! The iPhone I ordered arrived in perfect condition and exactly as described. TechHub Electronics is definitely my go-to store for electronics.",
+                      verified: true,
+                      helpful: 12
+                    },
+                    {
+                      id: 2,
+                      name: "Michael Chen",
+                      rating: 4,
+                      date: "1 month ago",
+                      review: "Great selection of products and competitive prices. Had a small issue with my order but customer service resolved it quickly. Will shop here again.",
+                      verified: true,
+                      helpful: 8
+                    },
+                    {
+                      id: 3,
+                      name: "Emma Wilson",
+                      rating: 5,
+                      date: "3 weeks ago",
+                      review: "Amazing quality products! I've been shopping here for over a year and they never disappoint. The MacBook Pro I bought is working perfectly.",
+                      verified: true,
+                      helpful: 15
+                    }
+                  ].map((review) => (
+                    <div key={review.id} className="border border-gray-200 rounded-lg p-4 sm:p-6 hover:shadow-md transition-shadow">
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3">
+                        <div className="flex items-center space-x-3 mb-2 sm:mb-0">
+                          <div className="w-10 h-10 bg-gradient-to-br from-purple-600 to-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">
+                            {review.name.charAt(0)}
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-gray-900 text-sm sm:text-base">{review.name}</h4>
+                            <div className="flex items-center space-x-2">
+                              <div className="flex">
+                                {[...Array(5)].map((_, i) => (
+                                  <Star
+                                    key={i}
+                                    className={`w-3 h-3 sm:w-4 sm:h-4 ${
+                                      i < review.rating
+                                        ? "fill-yellow-400 text-yellow-400"
+                                        : "text-gray-300"
+                                    }`}
+                                  />
+                                ))}
+                              </div>
+                              {review.verified && (
+                                <Badge className="bg-green-100 text-green-800 text-xs px-2 py-0.5">
+                                  Verified Purchase
+                                </Badge>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                        <span className="text-xs sm:text-sm text-gray-500">{review.date}</span>
+                      </div>
+                      
+                      <p className="text-gray-700 mb-4 text-sm sm:text-base leading-relaxed">
+                        {review.review}
+                      </p>
+                      
+                      <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+                        <Button variant="ghost" size="sm" className="text-gray-600 hover:text-purple-600 text-xs sm:text-sm">
+                          👍 Helpful ({review.helpful})
+                        </Button>
+                        <Button variant="ghost" size="sm" className="text-gray-600 hover:text-purple-600 text-xs sm:text-sm">
+                          Reply
+                        </Button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Load More Reviews */}
+                <div className="text-center mt-8">
+                  <Button variant="outline" className="border-purple-600 text-purple-600 hover:bg-purple-50">
+                    Load More Reviews
+                  </Button>
+                </div>
               </div>
             </div>
           </div>

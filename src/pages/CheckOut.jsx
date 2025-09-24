@@ -35,65 +35,68 @@ export default function CheckOut() {
 
   return (
     <div> 
-        <main className="max-w-7xl  mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <main className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 py-8">
         <div className="space-y-6">
-          <div className="flex items-center justify-between">
-            <h2 className="text-3xl font-bold">Checkout</h2>
-            <div className="flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
+            <h2 className="text-2xl sm:text-3xl font-bold">Checkout</h2>
+            <div className="flex items-center gap-1 sm:gap-2">
               {[1, 2, 3].map((step) => (
                 <div key={step} className="flex items-center">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
+                  <div className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm font-medium ${
                     step <= checkoutStep ? 'bg-gradient-to-br from-purple-600 to-blue-600 text-white' : 'bg-gray-200 text-gray-600'
                   }`}>
                     {step}
                   </div>
-                  {step < 3 && <div className={`w-8 h-0.5 ${step < checkoutStep ? 'bg-gradient-to-br from-purple-600 to-blue-600' : 'bg-gray-200'}`} />}
+                  {step < 3 && <div className={`w-6 sm:w-8 h-0.5 ${step < checkoutStep ? 'bg-gradient-to-br from-purple-600 to-blue-600' : 'bg-gray-200'}`} />}
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-6 sm:gap-8">
             <div className="lg:col-span-2">
-              <Tabs value={checkoutStep.toString()} className="w-full " >
+              <Tabs value={checkoutStep.toString()} className="w-full">
                 <TabsList className="grid w-full grid-cols-3 bg-gray-100">
-                  <TabsTrigger value="1" onClick={() => setCheckoutStep(1)}>
-                    <User className="h-4 w-4 mr-2" />
-                    Billing
+                  <TabsTrigger value="1" onClick={() => setCheckoutStep(1)} className="text-xs sm:text-sm">
+                    <User className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                    <span className="hidden sm:inline">Billing</span>
+                    <span className="sm:hidden">Bill</span>
                   </TabsTrigger>
-                  <TabsTrigger value="2" onClick={() => setCheckoutStep(2)}>
-                    <MapPin className="h-4 w-4 mr-2" />
-                    Shipping
+                  <TabsTrigger value="2" onClick={() => setCheckoutStep(2)} className="text-xs sm:text-sm">
+                    <MapPin className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                    <span className="hidden sm:inline">Shipping</span>
+                    <span className="sm:hidden">Ship</span>
                   </TabsTrigger>
-                  <TabsTrigger value="3" onClick={() => setCheckoutStep(3)}>
-                    <CreditCard className="h-4 w-4 mr-2" />
-                    Payment
+                  <TabsTrigger value="3" onClick={() => setCheckoutStep(3)} className="text-xs sm:text-sm">
+                    <CreditCard className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                    <span className="hidden sm:inline">Payment</span>
+                    <span className="sm:hidden">Pay</span>
                   </TabsTrigger>
                 </TabsList>
                 
-                <TabsContent value="1" className="space-y-4 mt-6  ">
-                  <Card className="border-gray-200 shadow-lg bg-gray-50 h-98">
-                    <CardHeader>
-                      <CardTitle>Billing Information</CardTitle>
+                <TabsContent value="1" className="space-y-4 mt-6">
+                  <Card className="border-gray-200 shadow-lg bg-gray-50">
+                    <CardHeader className="pb-3 sm:pb-4">
+                      <CardTitle className="text-lg sm:text-xl">Billing Information</CardTitle>
                     </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="space-y-4">
-                          <Label htmlFor="firstName">First Name</Label>
-                          <Input id="firstName" placeholder="John" className="border border-gray-400"/>
+                    <CardContent className="space-y-3 sm:space-y-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="firstName" className="text-sm">First Name</Label>
+                          <Input id="firstName" placeholder="John" className="border border-gray-400 text-sm"/>
                         </div>
-                        <div className="space-y-4">
-                          <Label htmlFor="lastName">Last Name</Label>
-                          <Input id="lastName" placeholder="Doe" className="border border-gray-400"/>
+                        <div className="space-y-2">
+                          <Label htmlFor="lastName" className="text-sm">Last Name</Label>
+                          <Input id="lastName" placeholder="Doe" className="border border-gray-400 text-sm"/>
                         </div>
                       </div>
-                      <div className="space-y-4">
-                        <Label htmlFor="email">Email</Label>
-                        <Input id="email" type="email" placeholder="john@example.com" className="border border-gray-400"/>
+                      <div className="space-y-2">
+                        <Label htmlFor="email" className="text-sm">Email</Label>
+                        <Input id="email" type="email" placeholder="john@example.com" className="border border-gray-400 text-sm"/>
                       </div>
-                      <div className="space-y-4">
-                        <Label htmlFor="phone">Phone Number</Label>
-                        <Input id="phone" placeholder="+1 (555) 123-4567" className="border border-gray-400"/>
+                      <div className="space-y-2">
+                        <Label htmlFor="phone" className="text-sm">Phone Number</Label>
+                        <Input id="phone" placeholder="+1 (555) 123-4567" className="border border-gray-400 text-sm"/>
                       </div>
                     </CardContent>
                   </Card>
@@ -162,19 +165,19 @@ export default function CheckOut() {
                 </TabsContent>
               </Tabs>
               
-              <div className="flex justify-between mt-6">
+              <div className="flex flex-col sm:flex-row justify-between mt-6 space-y-3 sm:space-y-0 sm:space-x-3">
                 {checkoutStep > 1 && (
-                  <Button variant="outline" onClick={() => setCheckoutStep(checkoutStep - 1)} className="border-purple-300 text-gray-700 hover:bg-purple-400 hover:text-white">
+                  <Button variant="outline" onClick={() => setCheckoutStep(checkoutStep - 1)} className="border-purple-300 text-gray-700 hover:bg-purple-400 hover:text-white text-sm">
                     Previous
                   </Button>
                 )}
-                <div className="ml-auto">
+                <div className="sm:ml-auto">
                   {checkoutStep < 3 ? (
-                    <Button onClick={() => setCheckoutStep(checkoutStep + 1)} className="bg-purple-600 hover:bg-purple-700 text-white">
+                    <Button onClick={() => setCheckoutStep(checkoutStep + 1)} className="bg-purple-600 hover:bg-purple-700 text-white w-full sm:w-auto text-sm">
                       Next
                     </Button>
                   ) : (
-                    <Button className="bg-green-600 hover:bg-green-700 text-white" >
+                    <Button className="bg-green-600 hover:bg-green-700 text-white w-full sm:w-auto text-sm">
                       Complete Order
                     </Button>
                   )}
