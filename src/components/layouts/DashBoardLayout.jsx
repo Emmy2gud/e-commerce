@@ -18,13 +18,7 @@ import {
   DollarSign,
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import DashboardHeader from '../../components/DashboardHeader';
-import RevenueChart from '../../components/RevenueChart';
-import RecentActivities from '../../components/RecentActivities';
-import TopProducts from '../../components/topProducts';
-import TotalSales from '../../components/TotalSales';
-import { RadialChart } from '../../components/RadialChart';
-import { LineChart } from '../../components/LineChart';
+
 import { Header } from '../dashboard/Header';
 import {
   ChevronDown,

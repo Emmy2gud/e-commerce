@@ -316,57 +316,80 @@ export default function FilterPage() {
             </div>
 
             {/* Product Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
-              {products.map((product) => (
-                <Card key={product.id} className="group cursor-pointer hover:shadow-lg transition-shadow border-none shadow-sm shadow-gray-400">
-                  <CardContent className="p-4">
-                    <div className="relative mb-4">
-                      <img
-                        src={product.image || "/placeholder.svg"}
-                        alt={product.name}
-                        className="w-full h-48 object-cover rounded-md group-hover:scale-105 transition-transform"
-                      />
-                      {product.badge && (
-                        <Badge
-                          className={`absolute top-2 left-2 ${
-                            product.badge === "Sale"
-                              ? "bg-red-500"
-                              : product.badge === "New"
-                                ? "bg-green-500"
-                                : "bg-blue-500"
-                          }`}
-                        >
-                          {product.badge}
-                        </Badge>
-                      )}
-                    </div>
-                    <h3 className="font-medium text-gray-900 mb-2 line-clamp-2">{product.name}</h3>
-                    <div className="flex items-center mb-2">
-                      <div className="flex items-center">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className={`h-3 w-3 ${
-                              i < Math.floor(product.rating) ? "fill-yellow-400 text-yellow-400" : "text-gray-300"
-                            }`}
-                          />
-                        ))}
-                      </div>
-                      <span className="text-sm text-gray-600 ml-1">({product.reviews})</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-2">
-                        <span className="text-lg font-bold text-gray-900">${product.price}</span>
-                        {product.originalPrice && (
-                          <span className="text-sm text-gray-500 line-through">${product.originalPrice}</span>
-                        )}
-                      </div>
-                      <Button size="sm" className="bg-purple-600 text-white font-bold shadow-lg shadow-purple-300 hover:bg-purple-400">Add to Cart</Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+        <div className="container mx-auto px-4 py-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
+        {products.map((product) => (
+          <Card key={product.id} className="group cursor-pointer hover:shadow-lg transition-all duration-300 border-none shadow-sm shadow-gray-200 hover:shadow-gray-300">
+            <CardContent className="p-3 sm:p-4">
+              <div className="relative mb-3 sm:mb-4">
+                <img
+                  src={product.image || "/placeholder.svg"}
+                  alt={product.name}
+                  className="w-full h-32 sm:h-40 md:h-48 object-cover rounded-md group-hover:scale-105 transition-transform duration-300"
+                />
+                {product.badge && (
+                  <Badge
+                    className={`absolute top-2 left-2 text-xs px-2 py-1 ${
+                      product.badge === "Sale"
+                        ? "bg-red-500 text-white"
+                        : product.badge === "New"
+                          ? "bg-green-500 text-white"
+                          : product.badge === "Popular"
+                            ? "bg-blue-500 text-white"
+                            : "bg-purple-500 text-white"
+                    }`}
+                  >
+                    {product.badge}
+                  </Badge>
+                )}
+              </div>
+              
+              <h3 className="font-medium text-gray-900 mb-2 text-sm sm:text-base line-clamp-2 min-h-[2.5rem] sm:min-h-[3rem]">
+                {product.name}
+              </h3>
+              
+              <div className="flex items-center mb-2 sm:mb-3">
+                <div className="flex items-center">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className={`h-3 w-3 sm:h-4 sm:w-4 ${
+                        i < Math.floor(product.rating) 
+                          ? "fill-yellow-400 text-yellow-400" 
+                          : "text-gray-300"
+                      }`}
+                    />
+                  ))}
+                </div>
+                <span className="text-xs sm:text-sm text-gray-600 ml-1">
+                  ({product.reviews})
+                </span>
+              </div>
+              
+              <div className="space-y-2 sm:space-y-3">
+                <div className="flex items-center justify-between sm:justify-start sm:space-x-2">
+                  <span className="text-base sm:text-lg font-bold text-gray-900">
+                    ${product.price}
+                  </span>
+                  {product.originalPrice && (
+                    <span className="text-xs sm:text-sm text-gray-500 line-through">
+                      ${product.originalPrice}
+                    </span>
+                  )}
+                </div>
+                
+                <Button 
+                  size="sm" 
+                  className="w-full bg-purple-600 text-white font-bold shadow-lg shadow-purple-300 hover:bg-purple-500 transition-colors text-xs sm:text-sm py-1.5 sm:py-2"
+                >
+                  Add to Cart
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
 
             {/* Pagination */}
             <div className="flex items-center justify-center mt-8 md:mt-12">
@@ -377,13 +400,13 @@ export default function FilterPage() {
                 <Button variant="outline" size="sm" className="bg-purple-600 text-white">
                   1
                 </Button>
-                <Button variant="outline" size="sm">
+                <Button variant="outline" size="sm" className="border-violet-600 text-gray-400">
                   2
                 </Button>
-                <Button variant="outline" size="sm">
+                <Button variant="outline" size="sm" className="border-violet-600 text-gray-400">
                   3
                 </Button>
-                <Button variant="outline" size="sm">
+                <Button variant="outline" size="sm" className="border-violet-600 text-gray-400">
                   Next
                 </Button>
               </div>

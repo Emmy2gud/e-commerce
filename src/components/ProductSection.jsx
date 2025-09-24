@@ -19,7 +19,7 @@ const ProductSection = ({
   className = "" 
 }) => {
   const renderProductCarousel = (productList) => (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden ">
       <Carousel
         opts={{
           align: "start",
