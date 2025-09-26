@@ -13,7 +13,7 @@ const SellerCard = ({ seller }) => {
     return Array.from({ length: 5 }, (_, i) => (
       <Star
         key={i}
-        className={`h-4 w-4 ${
+        className={`h-3 w-3 sm:h-4 sm:w-4 ${
           i < Math.floor(rating) 
             ? "text-yellow-400 fill-current" 
             : "text-gray-300"
@@ -23,113 +23,121 @@ const SellerCard = ({ seller }) => {
   };
 
   return (
-    <Card className="bg-white hover-lift group cursor-pointer border-0 overflow-hidden">
+    <Card className="bg-white hover:shadow-xl group cursor-pointer border border-gray-100 overflow-hidden rounded-xl sm:rounded-2xl transition-all duration-300 hover:-translate-y-1">
       <div className="relative">
         <img
           src={seller.image}
           alt={seller.name}
-          className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+          className="w-full h-32 sm:h-40 lg:h-48 object-cover transition-transform duration-500 group-hover:scale-110"
         />
-        <div className="absolute top-3 right-3 flex gap-2">
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+        
+        <div className="absolute top-2 sm:top-3 right-2 sm:right-3 flex gap-1 sm:gap-2">
           <Button
             size="sm"
-            variant="secondary"
-            className="bg-white/90 backdrop-blur-sm h-8 w-8 p-0"
+            className="bg-white/90 backdrop-blur-sm h-6 w-6 sm:h-8 sm:w-8 p-0 rounded-full hover:bg-white shadow-lg"
             onClick={(e) => {
               e.stopPropagation();
               setIsFavorited(!isFavorited);
             }}
           >
-            <Heart className={`h-4 w-4 ${isFavorited ? "text-red-500 fill-current" : "text-gray-500"}`} />
+            <Heart className={`h-3 w-3 sm:h-4 sm:w-4 ${
+              isFavorited ? "text-red-500 fill-current" : "text-gray-600"
+            }`} />
           </Button>
         </div>
-        <div className="absolute bottom-3 left-3">
+        
+        <div className="absolute bottom-2 sm:bottom-3 left-2 sm:left-3">
           <Badge 
-            variant={seller.isOpen ? "default" : "secondary"}
-            className={seller.isOpen ? "bg-accent text-white" : ""}
+            className={`text-xs sm:text-sm px-2 py-1 rounded-full font-medium ${
+              seller.isOpen 
+                ? "bg-green-500 text-white shadow-lg" 
+                : "bg-gray-500 text-white"
+            }`}
           >
-            <Clock className="mr-1 h-3 w-3" />
+            <Clock className="mr-1 h-2 w-2 sm:h-3 sm:w-3" />
             {seller.isOpen ? "Open" : "Closed"}
           </Badge>
         </div>
       </div>
 
-      <CardContent className="p-5 space-y-4">
+      <CardContent className="p-3 sm:p-4 lg:p-5 space-y-2 sm:space-y-3">
         {/* Header */}
-        <div className="space-y-2">
+        <div className="space-y-1 sm:space-y-2">
           <div className="flex items-start justify-between">
-            <h3 className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">
+            <h3 className="font-bold text-sm sm:text-base lg:text-lg text-gray-900 group-hover:text-purple-600 transition-colors leading-tight line-clamp-2">
               {seller.name}
             </h3>
-        
           </div>
           
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2">
             <div className="flex items-center">
               {renderStars(seller.rating)}
             </div>
-            <span className="text-sm font-medium">{seller.rating}</span>
-            <span className="text-sm text-muted-foreground">({seller.reviewCount} reviews)</span>
+            <span className="text-xs sm:text-sm font-medium text-gray-900">{seller.rating}</span>
+            <span className="text-xs text-gray-500 truncate">({seller.reviewCount})</span>
           </div>
         </div>
 
         {/* Category & Distance */}
-        <div className="flex items-center justify-between text-sm">
-          <Badge variant="outline" className="text-xs border-0 bg-amber-500 text-white">
+        <div className="flex items-center justify-between text-xs sm:text-sm">
+          <Badge className="text-xs px-2 py-1 bg-gradient-to-r from-purple-100 to-blue-100 text-purple-700 border-0 rounded-full font-medium">
             {seller.category}
           </Badge>
-          <div className="flex items-center text-muted-foreground">
+          <div className="flex items-center text-gray-500">
             <MapPin className="mr-1 h-3 w-3" />
-            {seller.distance}
+            <span className="text-xs font-medium">{seller.distance}</span>
           </div>
         </div>
 
-        {/* Description */}
-        <p className="text-sm text-muted-foreground line-clamp-2">
+        {/* Description - Only show on larger screens */}
+        <p className="text-xs sm:text-sm text-gray-600 line-clamp-2 hidden sm:block leading-relaxed">
           {seller.description}
         </p>
 
-        {/* Tags */}
+        {/* Tags - Responsive */}
         <div className="flex flex-wrap gap-1">
-          {seller.tags.slice(0, 3).map((tag, index) => (
-            <Badge key={index} variant="secondary" className="text-xs px-2 py-1">
+          {seller.tags.slice(0, 2).map((tag, index) => (
+            <Badge key={index} className="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded-full border-0">
               {tag}
             </Badge>
           ))}
-          {seller.tags.length > 3 && (
-            <Badge variant="outline" className="text-xs px-2 py-1">
-              +{seller.tags.length - 3}
+          {seller.tags.length > 2 && (
+            <Badge className="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded-full border-0">
+              +{seller.tags.length - 2}
             </Badge>
           )}
         </div>
 
-        {/* Actions */}
-        <div className="flex gap-2 pt-2">
+        {/* Actions - Responsive */}
+        <div className="flex gap-1 sm:gap-2 pt-1 sm:pt-2">
           <Button 
             size="sm" 
-            className="bg-gradient-to-br from-purple-600 to-blue-600 text-white flex-1"
+            className="bg-gradient-to-r from-purple-600 to-blue-600 text-white flex-1 text-xs sm:text-sm py-1 sm:py-2 rounded-lg hover:shadow-lg transition-all duration-300"
             onClick={(e) => e.stopPropagation()}
           >
-            <Phone className="mr-2 h-4 w-4" />
-            Call
+            <Phone className="mr-1 h-3 w-3 sm:h-4 sm:w-4" />
+            <span className="hidden sm:inline">Call</span>
+            <span className="sm:hidden">📞</span>
           </Button>
           {seller.website && (
             <Button 
               size="sm" 
-              variant="outline" 
-              className="flex-1 border-1 border-gray-400"
+              className="flex-1 border border-gray-200 bg-white text-gray-700 hover:bg-gray-50 text-xs sm:text-sm py-1 sm:py-2 rounded-lg transition-all duration-300"
               onClick={(e) => e.stopPropagation()}
             >
-              <Globe className="mr-2 h-4 w-4" />
-              Visit
+              <Globe className="mr-1 h-3 w-3 sm:h-4 sm:w-4" />
+              <span className="hidden sm:inline">Visit</span>
+              <span className="sm:hidden">🌐</span>
             </Button>
           )}
         </div>
 
-        {/* Address */}
-        <div className="flex items-start gap-2 pt-2 border-t border-gray-400/50">
-          <MapPin className="h-4 w-4 text-muted-foreground mt-0.5 flex-shrink-0" />
-          <span className="text-sm text-muted-foreground leading-relaxed">
+        {/* Address - Compact on mobile */}
+        <div className="flex items-start gap-1 sm:gap-2 pt-1 sm:pt-2 border-t border-gray-100">
+          <MapPin className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400 mt-0.5 flex-shrink-0" />
+          <span className="text-xs sm:text-sm text-gray-500 leading-relaxed line-clamp-2">
             {seller.address}
           </span>
         </div>

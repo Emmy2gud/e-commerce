@@ -28,27 +28,31 @@ const LocationSearch = ({ onSearch }) => {
   };
 
   return (
-    <div className="backdrop-blur-xs bg-white/80 border border-white/10 p-6 rounded-2xl space-y-6 animate-fade-in">
+    <div className="space-y-4 sm:space-y-6">
       {/* Main Search */}
-      <div className="space-y-4">
-        <div className="flex flex-col md:flex-row gap-4 bg">
-          <div className="flex-1 relative  ">
-            <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
+      <div className="space-y-3 sm:space-y-4">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+          <div className="flex-1 relative">
+            <MapPin className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4 sm:h-5 sm:w-5" />
             <Input
-              placeholder="Enter your location (city, area, zip code)"
+              placeholder="Enter your location..."
               value={location}
               onChange={(e) => setLocation(e.target.value)}
-              className="search-input pl-10 h-12 text-lg border-0 bg-white "
+              className="pl-10 sm:pl-12 h-12 sm:h-14 text-sm sm:text-base border-2 border-gray-200 rounded-xl sm:rounded-2xl focus:border-purple-400 focus:ring-4 focus:ring-purple-100 transition-all duration-300 bg-white shadow-sm"
             />
           </div>
           
           <Select value={category} onValueChange={setCategory}>
-            <SelectTrigger className="border-1 border-gray-400 h-12 w-full md:w-[200px]">
-              <SelectValue placeholder="Category" />
+            <SelectTrigger className="h-12 sm:h-14 w-full sm:w-[180px] lg:w-[220px] border-2 border-gray-200 rounded-xl sm:rounded-2xl focus:border-purple-400 bg-white shadow-sm">
+              <SelectValue placeholder="All Categories" />
             </SelectTrigger>
-            <SelectContent className="bg-white/95 backdrop-blur-lg border border-white/20">
+            <SelectContent className="bg-white border border-gray-200 rounded-xl shadow-xl">
               {categories.map((cat) => (
-                <SelectItem key={cat} value={cat.toLowerCase()}>
+                <SelectItem 
+                  key={cat} 
+                  value={cat.toLowerCase()}
+                  className="hover:bg-purple-50 focus:bg-purple-50 text-gray-700"
+                >
                   {cat}
                 </SelectItem>
               ))}
@@ -58,83 +62,83 @@ const LocationSearch = ({ onSearch }) => {
           <Button 
             onClick={handleSearch}
             size="lg"
-            className="btn-gradient-primary h-12 px-8 font-semibold"
+            className="h-12 sm:h-14 px-6 sm:px-8 font-semibold bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl sm:rounded-2xl hover:shadow-lg transform hover:scale-105 transition-all duration-300 w-full sm:w-auto"
           >
-            <Search className="mr-2 h-5 w-5" />
-            Find Sellers
+            <Search className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+            <span className="hidden sm:inline">Find Sellers</span>
+            <span className="sm:hidden">Search</span>
           </Button>
         </div>
 
         {/* Quick Filters Toggle */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
           <div className="flex flex-wrap gap-2">
-            <Badge variant="secondary" className="cursor-pointer bg-amber-500 text-white">
+            <Badge className="cursor-pointer bg-gradient-to-r from-purple-100 to-blue-100 text-purple-700 border-0 px-3 py-1.5 rounded-full hover:shadow-md transition-all duration-300">
               <MapPin className="mr-1 h-3 w-3" />
               Near me
             </Badge>
-            <Badge variant="outline" className="cursor-pointer border-violet-600 hover:bg-violet-600 hover:text-white">
+            <Badge className="cursor-pointer border-2 border-purple-200 text-purple-600 bg-white hover:bg-purple-50 px-3 py-1.5 rounded-full transition-all duration-300">
               Top rated
             </Badge>
-            <Badge variant="outline" className="cursor-pointer border-violet-600 hover:bg-violet-600 hover:text-white">
+            <Badge className="cursor-pointer border-2 border-purple-200 text-purple-600 bg-white hover:bg-purple-50 px-3 py-1.5 rounded-full transition-all duration-300">
               Open now
             </Badge>
           </div>
           
           <Button
-      
             size="sm"
             onClick={() => setShowFilters(!showFilters)}
-            className="bg-gradient-to-r from-purple-600 to-blue-600 text-white"
+            className="bg-gray-100 text-gray-700 hover:bg-gray-200 border-0 rounded-full px-4 py-2 w-full sm:w-auto transition-all duration-300"
           >
             <SlidersHorizontal className="mr-2 h-4 w-4" />
-            Filters
+            Advanced Filters
           </Button>
         </div>
 
         {/* Advanced Filters */}
         {showFilters && (
-          <div className="bg-glass p-4 rounded-xl space-y-4 animate-slide-in">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="bg-gradient-to-br from-gray-50 to-white p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-gray-200 space-y-4 animate-fade-in shadow-sm">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">Distance</label>
+                <label className="block text-sm font-semibold mb-2 text-gray-700">Distance</label>
                 <Select value={distance} onValueChange={setDistance}>
-                  <SelectTrigger  className="border-1 border-gray-400 w-58">
+                  <SelectTrigger className="border-2 border-gray-200 rounded-lg h-10 sm:h-12 bg-white hover:border-purple-300 transition-colors">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent className="bg-white border-0 ">
-                    <SelectItem value="1" className='hover:bg-violet-300 hover:text-white'>Within 1 km</SelectItem>
-                    <SelectItem value="5" className='hover:bg-violet-300 hover:text-white'>Within 5 km</SelectItem>
-                    <SelectItem value="10" className='hover:bg-violet-300 hover:text-white'>Within 10 km</SelectItem>
-                    <SelectItem value="25" className='hover:bg-violet-300 hover:text-white'>Within 25 km</SelectItem>
+                  <SelectContent className="bg-white border border-gray-200 rounded-lg shadow-xl">
+                    <SelectItem value="1" className='hover:bg-purple-50 text-gray-700'>Within 1 km</SelectItem>
+                    <SelectItem value="5" className='hover:bg-purple-50 text-gray-700'>Within 5 km</SelectItem>
+                    <SelectItem value="10" className='hover:bg-purple-50 text-gray-700'>Within 10 km</SelectItem>
+                    <SelectItem value="25" className='hover:bg-purple-50 text-gray-700'>Within 25 km</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               
               <div>
-                <label className="block text-sm font-medium mb-2">Rating</label>
+                <label className="block text-sm font-semibold mb-2 text-gray-700">Rating</label>
                 <Select>
-                  <SelectTrigger  className="border-1 border-gray-400 w-58">
+                  <SelectTrigger className="border-2 border-gray-200 rounded-lg h-10 sm:h-12 bg-white hover:border-purple-300 transition-colors">
                     <SelectValue placeholder="Any rating" />
                   </SelectTrigger>
-                  <SelectContent className="bg-white border-0">
-                    <SelectItem value="4" className='hover:bg-violet-300 hover:text-white'>4+ stars</SelectItem>
-                    <SelectItem value="3" className='hover:bg-violet-300 hover:text-white'>3+ stars</SelectItem>
-                    <SelectItem value="2" className='hover:bg-violet-300 hover:text-white'>2+ stars</SelectItem>
+                  <SelectContent className="bg-white border border-gray-200 rounded-lg shadow-xl">
+                    <SelectItem value="4" className='hover:bg-purple-50 text-gray-700'>4+ stars</SelectItem>
+                    <SelectItem value="3" className='hover:bg-purple-50 text-gray-700'>3+ stars</SelectItem>
+                    <SelectItem value="2" className='hover:bg-purple-50 text-gray-700'>2+ stars</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               
-              <div>
-                <label className="block text-sm font-medium mb-2">Price Range</label>
+              <div className="sm:col-span-2 lg:col-span-1">
+                <label className="block text-sm font-semibold mb-2 text-gray-700">Price Range</label>
                 <Select>
-                  <SelectTrigger className="border-1 border-gray-400 w-58">
+                  <SelectTrigger className="border-2 border-gray-200 rounded-lg h-10 sm:h-12 bg-white hover:border-purple-300 transition-colors">
                     <SelectValue placeholder="Any price" />
                   </SelectTrigger>
-                  <SelectContent className="bg-white border-0">
-                    <SelectItem value="$" className='hover:bg-violet-300 hover:text-white'>$ - Budget</SelectItem>
-                    <SelectItem value="$$" className='hover:bg-violet-300 hover:text-white'>$$ - Moderate</SelectItem>
-                    <SelectItem value="$$$" className='hover:bg-violet-300 hover:text-white'>$$$ - Expensive</SelectItem>
-                    <SelectItem value="$$$$" className='hover:bg-violet-300 hover:text-white'>$$$$ - Luxury</SelectItem>
+                  <SelectContent className="bg-white border border-gray-200 rounded-lg shadow-xl">
+                    <SelectItem value="$" className='hover:bg-purple-50 text-gray-700'>$ - Budget</SelectItem>
+                    <SelectItem value="$$" className='hover:bg-purple-50 text-gray-700'>$$ - Moderate</SelectItem>
+                    <SelectItem value="$$$" className='hover:bg-purple-50 text-gray-700'>$$$ - Expensive</SelectItem>
+                    <SelectItem value="$$$$" className='hover:bg-purple-50 text-gray-700'>$$$$ - Luxury</SelectItem>
                   </SelectContent>
                 </Select>
               </div>

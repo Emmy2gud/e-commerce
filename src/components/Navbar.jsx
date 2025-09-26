@@ -14,18 +14,18 @@ import {
   Truck,
   X,
   TabletSmartphone,
-  Laptop ,
+  Laptop,
   Headphones,
-  Footprints ,
-   Shirt ,
-   Gift ,
+  Footprints,
+  Shirt,
+  Gift,
   Utensils,
-   Armchair,
-   ChevronDown,
-   ChevronUp,
-
-
-
+  Armchair,
+  ChevronDown,
+  ChevronUp,
+  LogIn,
+  CircleGauge,
+  User2,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -67,10 +67,7 @@ const MobileCategoryItem = ({ category, onLinkClick }) => {
           className="flex-1 justify-start text-left font-medium"
           asChild
         >
-          <Link
-            to={category.href}
-            onClick={onLinkClick}
-          >
+          <Link to={category.href} onClick={onLinkClick}>
             {category.title}
           </Link>
         </Button>
@@ -89,13 +86,15 @@ const MobileCategoryItem = ({ category, onLinkClick }) => {
           </Button>
         )}
       </div>
-      
+
       {isExpanded && (
         <div className="ml-4 space-y-2">
           {/* Featured Items */}
           {category.featured && (
             <div className="space-y-2">
-              <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide px-2">Featured</p>
+              <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide px-2">
+                Featured
+              </p>
               {category.featured.map((item) => (
                 <Button
                   key={item.name}
@@ -109,21 +108,21 @@ const MobileCategoryItem = ({ category, onLinkClick }) => {
                     onClick={onLinkClick}
                     className="flex items-center space-x-2"
                   >
-                    <div className="text-gray-400 scale-75">
-                      {item.icon}
-                    </div>
+                    <div className="text-gray-400 scale-75">{item.icon}</div>
                     <span>{item.name}</span>
                   </Link>
                 </Button>
               ))}
             </div>
           )}
-          
+
           {/* Subcategories */}
           {category.subcategories && (
             <div className="space-y-1">
               {category.featured && (
-                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide px-2 mt-3">Categories</p>
+                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide px-2 mt-3">
+                  Categories
+                </p>
               )}
               {category.subcategories.map((subcat) => (
                 <Button
@@ -133,10 +132,7 @@ const MobileCategoryItem = ({ category, onLinkClick }) => {
                   className="w-full justify-start text-muted-foreground"
                   asChild
                 >
-                  <Link
-                    to={subcat.href}
-                    onClick={onLinkClick}
-                  >
+                  <Link to={subcat.href} onClick={onLinkClick}>
                     {subcat.name}
                   </Link>
                 </Button>
@@ -167,19 +163,16 @@ const MegaMenuContent = ({ category }) => (
                
                 className="w-12 h-12 rounded-md object-cover"
               /> */}
-              
+
               {/* <TabletSmartphone  className="w-12 h-12 rounded-md object-cover" /> */}
-              <div className="text-gray-400">
-            {item.icon}
-              </div>
-           
+              <div className="text-gray-400">{item.icon}</div>
+
               <span className="font-semibold text-3xs">{item.name}</span>
             </Link>
           ))}
         </div>
       </div>
 
-   
       <div className="col-span-2">
         <h3 className="font-semibold text-lg mb-4">Categories</h3>
         <div className="grid grid-cols-2 gap-2">
@@ -210,12 +203,12 @@ const categories = [
       {
         name: "Laptops",
         href: "/electronics/laptops",
-        icon: <Laptop className='w-12 h-12' />,
+        icon: <Laptop className="w-12 h-12" />,
       },
       {
         name: "Headphones",
         href: "/electronics/headphones",
-        icon: <Headphones className='w-12 h-12' />,
+        icon: <Headphones className="w-12 h-12" />,
       },
     ],
     subcategories: [
@@ -264,12 +257,12 @@ const categories = [
       {
         name: "Decor",
         href: "/home/decor",
-        icon:<Gift className="w-12 h-12"/>,
+        icon: <Gift className="w-12 h-12" />,
       },
       {
         name: "Kitchen",
         href: "/home/kitchen",
-        icon:<Utensils className="w-12 h-12" />,
+        icon: <Utensils className="w-12 h-12" />,
       },
     ],
     subcategories: [
@@ -286,6 +279,33 @@ const categories = [
       { name: "Fitness", href: "/sports/fitness" },
       { name: "Outdoor", href: "/sports/outdoor" },
       { name: "Team Sports", href: "/sports/team" },
+    ],
+  },
+  {
+    title: "Marketplace",
+    href: "/marketplace",
+    featured: [
+      {
+        name: "Become a Seller",
+        href: "/become-seller",
+        icon: <Star className="w-12 h-12" />,
+      },
+      {
+        name: "Browse Stores",
+        href: "/stores",
+        icon: <Package className="w-12 h-12" />,
+      },
+      {
+        name: "Seller Resources",
+        href: "/seller-resources",
+        icon: <Settings className="w-12 h-12" />,
+      },
+    ],
+    subcategories: [
+      { name: "Top Rated Stores", href: "/stores/top-rated" },
+      { name: "New Stores", href: "/stores/new" },
+      { name: "Local Stores", href: "/stores/local" },
+      { name: "Seller Support", href: "/seller-support" },
     ],
   },
 ];
@@ -306,21 +326,42 @@ const Navbar = () => {
     <div>
       <div className="w-full">
         {/* Top Banner */}
-        <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white text-center py-2 text-sm">
-          <div className="container mx-auto px-4 flex items-center justify-center space-x-4">
-            <Truck className="h-4 w-4" />
-            <span>Free shipping on orders over $50</span>
-            <span className="hidden sm:inline">•</span>
-            <span className="hidden sm:inline">30-day returns</span>
+        <div className="flex bg-gradient-to-r from-purple-600 to-blue-600 text-white py-2 text-sm">
+          <div className="container mx-auto px-4 flex items-center justify-between">
+            {/* Left side - Promotional info */}
+            <div className="hidden sm:flex items-center space-x-4">
+              <Truck className="h-4 w-4" />
+              <span>Free shipping on orders over $50</span>
+              <span className="hidden sm:inline">•</span>
+              <span className="hidden sm:inline">30-day returns</span>
+            </div>
+
+            {/* Right side - Seller links */}
+            <div className="flex items-center space-x-4 text-xs font-medium">
+              <Link
+                to="location"
+                className="hover:text-yellow-300 transition-colors flex items-center space-x-1"
+              >
+                <span>🏪</span>
+                <span className="hidden sm:inline">Browse Stores</span>
+                <span className="sm:hidden">Stores</span>
+              </Link>
+              <span className="text-white/60">|</span>
+              <Link
+                to="/become-seller"
+                className="hover:text-yellow-300 transition-colors flex items-center space-x-1 bg-white/20 px-2 py-1 rounded-full hover:bg-white/30"
+              >
+                <span>✨</span>
+                <span className="hidden sm:inline">Become a Seller</span>
+                <span className="sm:hidden">Sell</span>
+              </Link>
+            </div>
           </div>
         </div>
 
-     
         <header className="sticky top-0 z-50 w-full border-b border-gray-300  bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
           <div className="px-2 mx-auto">
-          
             <div className="flex h-16 items-center justify-between  w-full">
-           
               <Link href="/" className="flex items-center space-x-2">
                 <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center">
                   <span className="text-white font-bold text-xl">S</span>
@@ -358,7 +399,6 @@ const Navbar = () => {
                   </Badge>
                 </Button>
 
-              
                 <Button
                   variant="ghost"
                   size="icon"
@@ -375,8 +415,8 @@ const Navbar = () => {
                   </Link>
                 </Button>
 
-              {isLoggedIn ? (
-                  <DropdownMenu >
+                {isLoggedIn ? (
+                  <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button
                         variant="ghost"
@@ -390,7 +430,10 @@ const Navbar = () => {
                         <span className="hidden lg:inline">John Doe</span>
                       </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end" className="w-56 border-0 bg-white shadow-md rounded-lg">
+                    <DropdownMenuContent
+                      align="end"
+                      className="w-56 border-0 bg-white shadow-md rounded-lg"
+                    >
                       <DropdownMenuLabel>My Account</DropdownMenuLabel>
                       <DropdownMenuSeparator />
                       <DropdownMenuItem asChild>
@@ -429,7 +472,10 @@ const Navbar = () => {
                     <Button variant="ghost" asChild>
                       <Link to="/login">Login</Link>
                     </Button>
-                    <Button className="bg-gradient-to-br from-purple-600 to-blue-600 text-white" asChild>
+                    <Button
+                      className="bg-gradient-to-br from-purple-600 to-blue-600 text-white"
+                      asChild
+                    >
                       <Link to="/signup">Sign Up</Link>
                     </Button>
                   </div>
@@ -497,7 +543,10 @@ const Navbar = () => {
                       <Menu className="h-5 w-5" />
                     </Button>
                   </SheetTrigger>
-                  <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-white border-0 overflow-y-auto">
+                  <SheetContent
+                    side="right"
+                    className="w-[300px] sm:w-[400px] bg-white border-0 overflow-y-auto"
+                  >
                     <SheetHeader>
                       <SheetTitle>Menu</SheetTitle>
                     </SheetHeader>
@@ -516,7 +565,7 @@ const Navbar = () => {
                               </p>
                             </div>
                           </div>
-                          
+
                           {/* User Actions */}
                           <div className="space-y-2 px-2">
                             <Button
@@ -556,6 +605,45 @@ const Navbar = () => {
                               >
                                 <Heart className="mr-2 h-4 w-4" />
                                 Wishlist
+                              </Link>
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              className="w-full justify-start"
+                              asChild
+                            >
+                              <Link
+                                to="login"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                <LogIn className="mr-2 h-4 w-4" />
+                                Login
+                              </Link>
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              className="w-full justify-start"
+                              asChild
+                            >
+                              <Link
+                                to="signup"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                <User2 className="mr-2 h-4 w-4" />
+                                Sign Up
+                              </Link>
+                            </Button>
+                           <Button
+                              variant="ghost"
+                              className="w-full justify-start"
+                              asChild
+                            >
+                              <Link
+                                to="dashboard"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                <CircleGauge className="mr-2 h-4 w-4" />
+                                DashBoard
                               </Link>
                             </Button>
                             <Button
@@ -625,11 +713,49 @@ const Navbar = () => {
 
                       {/* Categories with Dropdowns */}
                       <div className="space-y-2 pt-4 border-t border-gray-300">
-                        <h3 className="font-semibold text-sm text-gray-500 uppercase tracking-wide px-2">Categories</h3>
+                        <h3 className="font-semibold text-sm text-gray-500 uppercase tracking-wide px-2">
+                          Quick Access
+                        </h3>
+
+                        {/* Seller Quick Links */}
+                        <div className="space-y-1 px-2">
+                          <Button
+                            variant="ghost"
+                            className="w-full justify-start text-purple-600 hover:text-purple-700 hover:bg-purple-50"
+                            asChild
+                          >
+                            <Link
+                              to="/become-seller"
+                              onClick={() => setIsMobileMenuOpen(false)}
+                              className="flex items-center"
+                            >
+                              <Star className="mr-2 h-4 w-4" />
+                              Become a Seller
+                            </Link>
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            className="w-full justify-start"
+                            asChild
+                          >
+                            <Link
+                              to="/stores"
+                              onClick={() => setIsMobileMenuOpen(false)}
+                              className="flex items-center"
+                            >
+                              <Package className="mr-2 h-4 w-4" />
+                              Browse Stores
+                            </Link>
+                          </Button>
+                        </div>
+
+                        <h3 className="font-semibold text-sm text-gray-500 uppercase tracking-wide px-2 pt-2">
+                          Categories
+                        </h3>
                         {categories.map((category) => (
-                          <MobileCategoryItem 
-                            key={category.title} 
-                            category={category} 
+                          <MobileCategoryItem
+                            key={category.title}
+                            category={category}
                             onLinkClick={() => setIsMobileMenuOpen(false)}
                           />
                         ))}
@@ -653,19 +779,16 @@ const Navbar = () => {
                             <button
                               onClick={() => toggleDropdown(category.title)}
                               type="button"
-
-                             className="inline-flex bg-white w-full justify-center gap-x-1 rounded-md  px-3 py-2 text-sm font-semibold text-gray-900 hover:ring-1 ring-gray-300 ring-inset hover:bg-gray-50"
-                              
+                              className="inline-flex bg-white w-full justify-center gap-x-1 rounded-md  px-3 py-2 text-sm font-semibold text-gray-900 hover:ring-1 ring-gray-300 ring-inset hover:bg-gray-50"
                               id="menu-button"
                               aria-expanded="true"
                               aria-haspopup="true"
                             >
-                              {category.title }
-                               {dropdownOpen === category.title ? ( 
-                             <ChevronUp className="w-5 h-5 text-gray-400"/>
-                              ):(
+                              {category.title}
+                              {dropdownOpen === category.title ? (
+                                <ChevronUp className="w-5 h-5 text-gray-400" />
+                              ) : (
                                 <ChevronDown className="w-5 h-5 text-gray-400" />
-                               
                               )}
                             </button>
                           </div>
@@ -684,7 +807,6 @@ const Navbar = () => {
                       )}
                     </NavigationMenuItem>
                   ))}
-      
                 </NavigationMenuList>
               </NavigationMenu>
             </div>

@@ -13,6 +13,12 @@ import {
   Store,
   TrendingUp,
   Users,
+  Clock,
+  Zap,
+  Gift,
+  ArrowRight,
+  Percent,
+  Tag,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -262,6 +268,171 @@ const Home = () => {
       <main>
         <section className="px-4 sm:px-6  ">
           <FilterPage />
+        </section>
+
+        {/* Discount Sales Banner Section */}
+        <section className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-purple-900 via-purple-800 to-blue-900 relative overflow-hidden">
+          {/* Animated Background Elements */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute -top-40 -right-32 w-80 h-80 bg-gradient-to-br from-yellow-400/20 to-orange-400/20 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute -bottom-40 -left-32 w-96 h-96 bg-gradient-to-br from-pink-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+            <div className="absolute top-20 left-1/2 w-32 h-32 bg-gradient-to-br from-blue-400/10 to-cyan-400/10 rounded-full blur-2xl animate-bounce" style={{ animationDelay: '1s' }} />
+          </div>
+          
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+              {/* Left Content */}
+              <div className="text-center lg:text-left space-y-6 sm:space-y-8">
+                {/* Flash Sale Badge */}
+                <div className="flex justify-center lg:justify-start">
+                  <Badge className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold px-4 py-2 text-sm sm:text-base rounded-full shadow-lg animate-pulse">
+                    <Zap className="w-4 h-4 mr-2" />
+                    FLASH SALE
+                  </Badge>
+                </div>
+                
+                {/* Main Heading */}
+                <div className="space-y-3 sm:space-y-4">
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight">
+                    <span className="block">Save Up to</span>
+                    <span className="block bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">
+                      70% OFF
+                    </span>
+                  </h2>
+                  <p className="text-base sm:text-lg lg:text-xl text-purple-100 max-w-md mx-auto lg:mx-0 leading-relaxed">
+                    Limited time offer on electronics, fashion, and home essentials. Don't miss out!
+                  </p>
+                </div>
+                
+                {/* Timer */}
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-white/20 max-w-sm mx-auto lg:mx-0">
+                  <div className="flex items-center justify-center lg:justify-start gap-2 mb-3">
+                    <Clock className="w-5 h-5 text-yellow-300" />
+                    <span className="text-white font-semibold text-sm sm:text-base">Sale Ends In:</span>
+                  </div>
+                  <div className="grid grid-cols-4 gap-2 sm:gap-3">
+                    {['12', '05', '32', '45'].map((time, index) => (
+                      <div key={index} className="bg-white/20 backdrop-blur-sm rounded-lg p-2 sm:p-3 text-center">
+                        <div className="text-lg sm:text-xl lg:text-2xl font-bold text-white">{time}</div>
+                        <div className="text-xs text-purple-200">
+                          {['Days', 'Hours', 'Mins', 'Secs'][index]}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+                  <Link to="/productlists">
+                    <Button className="w-full sm:w-auto bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                      <Gift className="w-5 h-5 mr-2" />
+                      Shop Sale Now
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Button>
+                  </Link>
+                  <Button variant="outline" className="w-full sm:w-auto border-2 border-white text-white hover:bg-white hover:text-purple-900 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold transition-all duration-300">
+                    <Percent className="w-5 h-5 mr-2" />
+                    View All Deals
+                  </Button>
+                </div>
+              </div>
+              
+              {/* Right Content - Product Showcase */}
+              <div className="relative mt-8 lg:mt-0">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
+                  {/* Featured Deal Products */}
+                  {[
+                    {
+                      name: "Wireless Headphones",
+                      originalPrice: "$199",
+                      salePrice: "$59",
+                      discount: "70%",
+                      image: "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400&h=400&fit=crop"
+                    },
+                    {
+                      name: "Smart Watch",
+                      originalPrice: "$299",
+                      salePrice: "$119",
+                      discount: "60%",
+                      image: "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=400&h=400&fit=crop"
+                    },
+                    {
+                      name: "Gaming Mouse",
+                      originalPrice: "$89",
+                      salePrice: "$35",
+                      discount: "61%",
+                      image: "https://images.unsplash.com/photo-1563297007-0686b83bf36e?w=400&h=400&fit=crop"
+                    },
+                    {
+                      name: "Power Bank",
+                      originalPrice: "$59",
+                      salePrice: "$19",
+                      discount: "68%",
+                      image: "https://images.unsplash.com/photo-1606979421229-6da4662b36fc?w=400&h=400&fit=crop"
+                    }
+                  ].map((product, index) => (
+                    <div key={index} className="group relative bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-4 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
+                      {/* Discount Badge */}
+                      <div className="absolute -top-2 -right-2 bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs sm:text-sm font-bold px-2 py-1 rounded-full shadow-lg z-10">
+                        -{product.discount} OFF
+                      </div>
+                      
+                      {/* Product Image */}
+                      <div className="aspect-square bg-white/20 rounded-lg sm:rounded-xl mb-2 sm:mb-3 overflow-hidden">
+                        <img 
+                          src={product.image} 
+                          alt={product.name}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                      </div>
+                      
+                      {/* Product Info */}
+                      <div className="text-center space-y-1 sm:space-y-2">
+                        <h4 className="text-white font-semibold text-xs sm:text-sm lg:text-base line-clamp-2">
+                          {product.name}
+                        </h4>
+                        <div className="space-y-1">
+                          <div className="text-xs sm:text-sm text-purple-200 line-through">
+                            {product.originalPrice}
+                          </div>
+                          <div className="text-sm sm:text-lg lg:text-xl font-bold text-yellow-300">
+                            {product.salePrice}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Floating Elements */}
+                <div className="absolute -top-4 -left-4 bg-yellow-400 text-black p-2 sm:p-3 rounded-full shadow-xl animate-bounce hidden sm:block">
+                  <Tag className="w-4 h-4 sm:w-6 sm:h-6" />
+                </div>
+                <div className="absolute -bottom-4 -right-4 bg-pink-500 text-white p-2 sm:p-3 rounded-full shadow-xl animate-pulse hidden sm:block">
+                  <Gift className="w-4 h-4 sm:w-6 sm:h-6" />
+                </div>
+              </div>
+            </div>
+            
+            {/* Bottom Stats */}
+            <div className="mt-12 sm:mt-16 pt-8 border-t border-white/20">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 text-center">
+                {[
+                  { icon: Users, label: "Happy Customers", value: "50K+" },
+                  { icon: Package, label: "Products on Sale", value: "10K+" },
+                  { icon: TrendingUp, label: "Average Savings", value: "65%" },
+                  { icon: Clock, label: "Sale Duration", value: "48H" }
+                ].map((stat, index) => (
+                  <div key={index} className="space-y-2">
+                    <stat.icon className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-300 mx-auto" />
+                    <div className="text-lg sm:text-xl lg:text-2xl font-bold text-white">{stat.value}</div>
+                    <div className="text-xs sm:text-sm text-purple-200">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </section>
 
     

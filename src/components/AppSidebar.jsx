@@ -27,7 +27,7 @@ export function AppSidebar({ adminNav, sellerNav }) {
   const [role] = React.useState("seller");
 
   const data = {
-    navMain: role === "admin" ? adminNav : sellerNav,
+    navMain: role === "seller" ? adminNav : sellerNav,
   };
 
   const [openDropdown, setOpenDropdown] = React.useState(null);

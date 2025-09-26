@@ -147,11 +147,11 @@ const SellerNotification = () => {
     if (items.length === 0) return null;
 
     return (
-      <div className="mb-8">
-        <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-3 px-1">
+      <div className="mb-6 sm:mb-8">
+        <h3 className="text-xs sm:text-sm font-semibold text-slate-500 uppercase tracking-wide mb-2 sm:mb-3 px-1">
           {sectionName}
         </h3>
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+        <div className="bg-white rounded-xl sm:rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
           {items.map((item, index) => (
             <div key={item.id}>
               <NotificationItem
@@ -228,23 +228,23 @@ const SellerNotification = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <main className="max-w-5xl mx-auto px-6 py-6">
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
         <Tabs defaultValue="all" className="w-full">
-          <TabsList className="grid w-full h-13 grid-cols-6 bg-slate-100 mb-2">
-            <TabsTrigger value="all">All</TabsTrigger>
-            <TabsTrigger value="order">Orders</TabsTrigger>
-            <TabsTrigger value="payout">Payouts</TabsTrigger>
-            <TabsTrigger value="dispute">Complaints</TabsTrigger>
-            <TabsTrigger value="message">Messages</TabsTrigger>
-            <TabsTrigger value="stock">System</TabsTrigger>
+          <TabsList className="grid w-full h-auto min-h-[52px] grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-1 sm:gap-2 bg-slate-100 mb-4 p-1">
+            <TabsTrigger value="all" className="text-xs sm:text-sm px-2 py-2">All</TabsTrigger>
+            <TabsTrigger value="order" className="text-xs sm:text-sm px-2 py-2">Orders</TabsTrigger>
+            <TabsTrigger value="payout" className="text-xs sm:text-sm px-2 py-2">Payouts</TabsTrigger>
+            <TabsTrigger value="dispute" className="text-xs sm:text-sm px-2 py-2">Complaints</TabsTrigger>
+            <TabsTrigger value="message" className="text-xs sm:text-sm px-2 py-2">Messages</TabsTrigger>
+            <TabsTrigger value="stock" className="text-xs sm:text-sm px-2 py-2">System</TabsTrigger>
           </TabsList>
 
           <TabsContent value="all">
             <div className="space-y-6">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <h2 className="text-lg font-medium text-slate-900">All Notifications</h2>
-                  <Badge variant="outline" className="text-sm border-0 bg-violet-600 text-white">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <h2 className="text-base sm:text-lg font-medium text-slate-900">All Notifications</h2>
+                  <Badge variant="outline" className="text-xs sm:text-sm border-0 bg-violet-600 text-white whitespace-nowrap">
                     {getAllItems().length} total
                   </Badge>
                 </div>
@@ -253,7 +253,7 @@ const SellerNotification = () => {
                   size="sm"
                   onClick={markAllAsRead}
                   disabled={!getAllItems().some(item => item.unread)}
-                  className='border-1 border-violet-600 hover:bg-violet-600 hover:text-white'
+                  className='border-1 border-violet-600 hover:bg-violet-600 hover:text-white w-full sm:w-auto'
                 >
                   Mark all read
                 </Button>
@@ -264,10 +264,10 @@ const SellerNotification = () => {
 
           <TabsContent value="order">
             <div className="space-y-6">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <h2 className="text-lg font-medium text-slate-900">Orders Notifications</h2>
-                  <Badge variant="outline" className="text-sm border-0 bg-violet-600 text-white">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <h2 className="text-base sm:text-lg font-medium text-slate-900">Orders Notifications</h2>
+                  <Badge variant="outline" className="text-xs sm:text-sm border-0 bg-violet-600 text-white whitespace-nowrap">
                     {getFilteredItems('order').length} total
                   </Badge>
                 </div>
@@ -276,7 +276,7 @@ const SellerNotification = () => {
                   size="sm"
                   onClick={markAllAsRead}
                   disabled={!getFilteredItems('order').some(item => item.unread)}
-                  className='border-1 border-violet-600 hover:bg-violet-600 hover:text-white'
+                  className='border-1 border-violet-600 hover:bg-violet-600 hover:text-white w-full sm:w-auto'
                 >
                   Mark all read
                 </Button>
@@ -287,10 +287,10 @@ const SellerNotification = () => {
 
           <TabsContent value="payout">
             <div className="space-y-6">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <h2 className="text-lg font-medium text-slate-900">Payouts Notifications</h2>
-                  <Badge variant="outline" className="text-sm border-0 bg-violet-600 text-white">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <h2 className="text-base sm:text-lg font-medium text-slate-900">Payouts Notifications</h2>
+                  <Badge variant="outline" className="text-xs sm:text-sm border-0 bg-violet-600 text-white whitespace-nowrap">
                     {getFilteredItems('payout').length} total
                   </Badge>
                 </div>
@@ -299,7 +299,7 @@ const SellerNotification = () => {
                   size="sm"
                   onClick={markAllAsRead}
                   disabled={!getFilteredItems('payout').some(item => item.unread)}
-                  className='border-1 border-violet-600 hover:bg-violet-600 hover:text-white'
+                  className='border-1 border-violet-600 hover:bg-violet-600 hover:text-white w-full sm:w-auto'
                 >
                   Mark all read
                 </Button>
@@ -310,10 +310,10 @@ const SellerNotification = () => {
 
           <TabsContent value="dispute">
             <div className="space-y-6">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <h2 className="text-lg font-medium text-slate-900">Complaints Notifications</h2>
-                  <Badge variant="outline" className="text-sm border-0 bg-violet-600 text-white">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <h2 className="text-base sm:text-lg font-medium text-slate-900">Complaints Notifications</h2>
+                  <Badge variant="outline" className="text-xs sm:text-sm border-0 bg-violet-600 text-white whitespace-nowrap">
                     {getFilteredItems('dispute').length} total
                   </Badge>
                 </div>
@@ -322,7 +322,7 @@ const SellerNotification = () => {
                   size="sm"
                   onClick={markAllAsRead}
                   disabled={!getFilteredItems('dispute').some(item => item.unread)}
-                  className='border-1 border-violet-600 hover:bg-violet-600 hover:text-white'
+                  className='border-1 border-violet-600 hover:bg-violet-600 hover:text-white w-full sm:w-auto'
                 >
                   Mark all read
                 </Button>
@@ -333,10 +333,10 @@ const SellerNotification = () => {
 
           <TabsContent value="message">
             <div className="space-y-6">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <h2 className="text-lg font-medium text-slate-900">Messages Notifications</h2>
-                  <Badge variant="outline" className="text-sm border-0 bg-violet-600 text-white">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <h2 className="text-base sm:text-lg font-medium text-slate-900">Messages Notifications</h2>
+                  <Badge variant="outline" className="text-xs sm:text-sm border-0 bg-violet-600 text-white whitespace-nowrap">
                     {getFilteredItems('message').length} total
                   </Badge>
                 </div>
@@ -345,7 +345,7 @@ const SellerNotification = () => {
                   size="sm"
                   onClick={markAllAsRead}
                   disabled={!getFilteredItems('message').some(item => item.unread)}
-                  className='border-1 border-violet-600 hover:bg-violet-600 hover:text-white'
+                  className='border-1 border-violet-600 hover:bg-violet-600 hover:text-white w-full sm:w-auto'
                 >
                   Mark all read
                 </Button>
@@ -356,10 +356,10 @@ const SellerNotification = () => {
 
           <TabsContent value="stock">
             <div className="space-y-6">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <h2 className="text-lg font-medium text-slate-900">System Notifications</h2>
-                  <Badge variant="outline" className="text-sm border-0 bg-violet-600 text-white">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <h2 className="text-base sm:text-lg font-medium text-slate-900">System Notifications</h2>
+                  <Badge variant="outline" className="text-xs sm:text-sm border-0 bg-violet-600 text-white whitespace-nowrap">
                     {getFilteredItems('stock').length} total
                   </Badge>
                 </div>
@@ -368,7 +368,7 @@ const SellerNotification = () => {
                   size="sm"
                   onClick={markAllAsRead}
                   disabled={!getFilteredItems('stock').some(item => item.unread)}
-                  className='border-1 border-violet-600 hover:bg-violet-600 hover:text-white'
+                  className='border-1 border-violet-600 hover:bg-violet-600 hover:text-white w-full sm:w-auto'
                 >
                   Mark all read
                 </Button>

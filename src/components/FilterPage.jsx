@@ -68,68 +68,13 @@ export default function FilterPage() {
       reviews: 201,
       image: "/placeholder.svg?height=200&width=200",
       badge: "Popular",
-    },
-    {
-      id: 7,
-      name: "Wireless Bluetooth Headphones",
-      price: 79.99,
-      originalPrice: 99.99,
-      rating: 4.5,
-      reviews: 128,
-      image: "/placeholder.svg?height=200&width=200",
-      badge: "Best Seller",
-    },
-    {
-      id: 8,
-      name: "Smart Fitness Watch",
-      price: 199.99,
-      rating: 4.3,
-      reviews: 89,
-      image: "/placeholder.svg?height=200&width=200",
-      badge: "New",
-    },
-    {
-      id: 9,
-      name: "Portable Phone Charger",
-      price: 29.99,
-      originalPrice: 39.99,
-      rating: 4.7,
-      reviews: 256,
-      image: "/placeholder.svg?height=200&width=200",
-      badge: "Sale",
-    },
-    {
-      id: 10,
-      name: "Wireless Mouse",
-      price: 24.99,
-      rating: 4.2,
-      reviews: 67,
-      image: "/placeholder.svg?height=200&width=200",
-    },
-    {
-      id: 11,
-      name: "USB-C Hub",
-      price: 49.99,
-      rating: 4.6,
-      reviews: 143,
-      image: "/placeholder.svg?height=200&width=200",
-    },
-    {
-      id: 12,
-      name: "Bluetooth Speaker",
-      price: 89.99,
-      originalPrice: 119.99,
-      rating: 4.4,
-      reviews: 201,
-      image: "/placeholder.svg?height=200&width=200",
-      badge: "Popular",
-    },
+    }
   ]
 
   const renderFilterContent = () => (
-    <>
+    <div>
       {/* Categories */}
-      <div className="space-y-4">
+      <div className="space-y-4 mb-2">
         <h3 className="font-medium text-gray-400 border-b pb-2">Categories</h3>
         <div className="space-y-3">
           {["Audio & Headphones", "Wearables", "Accessories", "Computing", "Mobile"].map((category) => (
@@ -144,7 +89,7 @@ export default function FilterPage() {
       </div>
 
       {/* Price Range */}
-      <div className="space-y-4">
+      <div className="space-y-4 mb-2">
         <h3 className="font-medium text-gray-400 border-b pb-2">Price Range</h3>
         <div className="space-y-4">
           <Slider 
@@ -165,23 +110,9 @@ export default function FilterPage() {
         </div>
       </div>
 
-      {/* Brand */}
-      <div className="space-y-4">
-        <h3 className="font-medium text-gray-400 border-b pb-2">Brand</h3>
-        <div className="space-y-3">
-          {["Apple", "Samsung", "Sony", "Anker", "Logitech"].map((brand) => (
-            <div key={brand} className="flex items-center space-x-2">
-              <Checkbox id={brand} className=" text-purple-400" />
-              <Label htmlFor={brand} className="text-sm font-normal">
-                {brand}
-              </Label>
-            </div>
-          ))}
-        </div>
-      </div>
 
       {/* Rating */}
-      <div className="space-y-4">
+      <div className="space-y-4 mb-2">
         <h3 className="font-medium text-gray-400 border-b pb-2">Customer Rating</h3>
         <div className="space-y-3">
           {[4, 3, 2, 1].map((rating) => (
@@ -204,7 +135,7 @@ export default function FilterPage() {
       </div>
 
       {/* Availability */}
-      <div className="space-y-4">
+      <div className="space-y-4 mb-2">
         <h3 className="font-medium text-gray-400 border-b pb-2">Availability</h3>
         <div className="space-y-3">
           <div className="flex items-center space-x-2">
@@ -221,23 +152,23 @@ export default function FilterPage() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 
   return (
     <div className=" ">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-8">
+      <div className="max-w-7xl mx-auto px-1 sm:px-6 lg:px-8 py-4 md:py-8">
         <div className="flex flex-col lg:flex-row gap-4 md:gap-8">
           {/* Mobile Filter Button */}
-          <div className="lg:hidden mb-4">
-            <Sheet open={isFilterOpen} onOpenChange={setIsFilterOpen}>
+          <div className="lg:hidden mb-4 ">
+            <Sheet open={isFilterOpen} onOpenChange={setIsFilterOpen} className=''>
               <SheetTrigger asChild>
                 <Button variant="outline" className="w-full flex items-center justify-center gap-2 text-gray-400 border-violet-600 hover:bg-violet-600 hover:text-white">
                   <Filter className="h-4 w-4" />
                   Filters
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="w-full sm:w-80 p-0">
+              <SheetContent side="left" className="w-full sm:w-80 p-0 bg-white">
                 <div className="p-6 space-y-6 overflow-y-auto h-full">
                   <SheetHeader>
                     <SheetTitle className="flex items-center justify-between">
@@ -316,7 +247,7 @@ export default function FilterPage() {
             </div>
 
             {/* Product Grid */}
-        <div className="container mx-auto px-2 sm:px-4 py-8">
+        <div className="container mx-auto px-2 sm:px-4 py-8 ">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3 gap-2 sm:gap-4 md:gap-6">
         {products.map((product) => (
           <Card key={product.id} className="group cursor-pointer hover:shadow-lg transition-all duration-300 border-none shadow-sm shadow-gray-200 hover:shadow-gray-300">
