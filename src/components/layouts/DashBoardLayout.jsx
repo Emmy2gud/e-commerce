@@ -16,6 +16,7 @@ import {
   Users,
   ShoppingCart,
   DollarSign,
+  Megaphone,
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
@@ -133,12 +134,22 @@ const sellerNav = [
       { title: 'Payouts', url: 'sales/payouts' },
     ],
   },
+    {
+    title: 'Ads',
+    url: '#',
+    icon: <Megaphone />,
+    items: [
+      { title: 'Create Ads', url: 'ads/create' },
+      { title: 'Ads History', url: 'ads/history' },
+      { title: 'Active Ads', url: 'ads/active' },
+    ],
+  },
   {
     title: 'Settings',
     url: '#',
     icon: <Settings />,
     items: [
-      { title: 'Account Settings', url: 'settings/account' },
+      { title: 'Account Settings', url: 'settings' },
       { title: 'Notifications', url: 'settings/notifications' },
     ],
   }

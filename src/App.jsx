@@ -40,6 +40,8 @@ import ProductLists from "./pages/ProductLists";
 import NearbyUser from "./pages/NearbyUser";
 import ProductDetail from "./pages/ProductDetail";
 import VendorStorefront from "./pages/VendorStorefront";
+import SellerSetting from "./pages/dashboard/sellers/settings/SellerSettings";
+import AdsDashboard, { ActiveAds, AdHistory, CreateAd } from "./pages/dashboard/sellers/ads";
 
 class App extends React.Component {
   render() {
@@ -58,6 +60,12 @@ class App extends React.Component {
               <Route path="sales/payouts" element={<Payouts />} />
               <Route path="sales/transactions" element={<Transactions />} />
               <Route path="settings/notifications" element={<SellerNotification />} />
+              <Route path="settings" element={<SellerSetting />} />
+              <Route path="ads/create" element={<CreateAd />} />
+              <Route path="ads/history" element={<AdHistory />} />
+               <Route path="ads/active" element={<ActiveAds />} />
+
+
               {/* admin dashboard page */}
               <Route path="admin/products" element={<AllProducts />} />
               <Route
