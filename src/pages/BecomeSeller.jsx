@@ -87,49 +87,51 @@ const BecomeSeller = () => {
 
   const pricingPlans = [
     {
-      name: "Starter",
-      price: "Free",
+      name: "Free (Starter)",
+      price: "$0/yearly",
       description: "Perfect for getting started",
       features: [
-        "Up to 50 products",
-        "Basic analytics",
-        "Standard support",
-        "Mobile app access",
-        "Basic customization"
+        "1 Store",
+        "Up to 10 products",
+        "Dashboard with analytics",
+        "Order management",
+        "Store management",
+        "Standard support"
       ],
       popular: false,
       buttonText: "Get Started Free",
       buttonVariant: "outline"
     },
     {
-      name: "Professional",
-      price: "$29/month",
+      name: "Growth (Basic)",
+      price: "$19/yearly",
       description: "Best for growing businesses",
       features: [
-        "Unlimited products",
-        "Advanced analytics",
-        "Priority support",
-        "Custom branding",
-        "Marketing tools",
-        "Inventory management",
-        "Multi-channel selling"
+        "1 Store",
+        "Up to 50 products",
+        "Dashboard with analytics",
+        "Order management",
+        "Store management",
+        "Marketplace priority listing",
+       
       ],
       popular: true,
       buttonText: "Start Free Trial",
       buttonVariant: "default"
     },
     {
-      name: "Enterprise",
-      price: "$99/month", 
+      name: "Pro (Business)",
+      price: "$59/yearly", 
       description: "For established businesses",
       features: [
-        "Everything in Professional",
-        "Advanced integrations",
-        "Dedicated account manager",
-        "Custom development",
-        "White-label solution",
-        "API access",
-        "Advanced reporting"
+        "1 Store (multi-store later)",
+        "Unlimited products",
+        "Dashboard with analytics",
+        "Order management",
+        "Store management + Theme",
+        "Marketplace priority listing",
+        "Ads Module (Facebook + Instagram)",
+        "Dedicated support"
       ],
       popular: false,
       buttonText: "Contact Sales",
@@ -162,21 +164,18 @@ const BecomeSeller = () => {
   ];
 
   const faqs = [
-    {
-      question: "Do I need a business license to start selling?",
-      answer: "Requirements vary by location and business type. While many sellers start without formal business registration, we recommend checking your local regulations. You can always upgrade your account status as your business grows."
-    },
-    {
-      question: "How and when do I get paid?",
-      answer: "We process payouts weekly on Fridays. Funds are transferred directly to your bank account within 2-3 business days. You can track all your earnings and payouts in real-time through your seller dashboard."
-    },
+
+ {
+  question: "How and when do I get paid?",
+  answer: "We use a secure escrow system. This means when a buyer makes a purchase, the payment is held safely in our system account. Once the buyer receives and confirms the originality/quality of the product, the funds are released to the seller. This protects both buyers and sellers by ensuring trust and transparency in every transaction."
+},
     {
       question: "Can I sell internationally?",
       answer: "Yes! Our platform supports international selling with automatic currency conversion, international shipping options, and compliance with various regional regulations. You can enable/disable specific countries in your seller settings."
     },
     {
       question: "What fees do you charge?",
-      answer: "Our Starter plan is completely free with no listing fees. We only charge a small transaction fee (2.9% + $0.30) when you make a sale. Professional and Enterprise plans have monthly fees but lower transaction rates."
+      answer: "No, we don't charge any fees for selling on our platform.Our platform is based on one-time subscription plans."
     },
     {
       question: "Can I also buy products as a seller?",
@@ -373,7 +372,7 @@ const BecomeSeller = () => {
             {/* Timeline line - hidden on mobile */}
             <div className="hidden lg:block absolute top-24 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 via-green-500 to-orange-500 mx-24"></div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 lg:gap-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 ">
               {steps.map((step, index) => {
                 const IconComponent = step.icon;
                 return (
@@ -411,8 +410,8 @@ const BecomeSeller = () => {
               <span className="hidden sm:block">Choose Your Plan</span>
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
-              <span className="hidden sm:inline">Start free and upgrade as you grow. No hidden fees, cancel anytime.</span>
-              <span className="sm:hidden">Start free, upgrade as you grow</span>
+              <span className="hidden sm:inline">Start with our free plan and scale your business as you grow. Upgrade anytime to unlock powerful features.</span>
+              <span className="sm:hidden">Start free, scale as you grow</span>
             </p>
           </div>
 

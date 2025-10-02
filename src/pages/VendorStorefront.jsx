@@ -1,5 +1,5 @@
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import {
   Star,
   Heart,
@@ -184,6 +184,11 @@ export default function VendorStorefront() {
   const [reviewText, setReviewText] = useState("")
   const [reviewRating, setReviewRating] = useState(0)
 
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+  }, [])
+
   const filteredProducts = products.filter(
     (product) => selectedCategory === "All" || product.category === selectedCategory,
   )
@@ -201,39 +206,44 @@ export default function VendorStorefront() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-           <div className="relative">
-          <div
-            className="h-64 bg-cover bg-center"
-            style={{ backgroundImage: `url(${vendorData.banner})` }}
-          >
-            <div className="absolute inset-0  bg-opacity-40"></div>
-          </div>
+      {/* Banner Section */}
+      <div className="relative">
+        <div
+          className="h-64 sm:h-80 bg-cover bg-center"
+          style={{ backgroundImage: `url(${vendorData.banner})` }}
+        >
+          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        </div>
+      </div>
 
-          <div className="container mx-auto px-4 relative -mt-20">
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6">
-                <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-lg">
-                  <img
-                    src={vendorData.logo}
-                    alt={vendorData.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+      {/* Vendor Info Card - Overlapping Banner */}
+      <div className="container mx-auto px-4 -mt-16 relative z-10 mb-8">
+        <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6">
+          <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-4 border-white shadow-lg flex-shrink-0">
+              <img
+                src={vendorData.logo}
+                alt={vendorData.name}
+                className="w-full h-full object-cover"
+              />
+            </div>
 
-                <div className="flex-1">
+            <div className="flex-1 min-w-0">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
+                <div className="flex-1 min-w-0">
                   <div className="flex items-center space-x-2 mb-2">
-                    <h1 className="text-3xl font-bold text-gray-900">
+                    <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 truncate">
                       {vendorData.name}
                     </h1>
                     <Badge
                       variant="secondary"
-                      className="bg-green-100 text-green-800"
+                      className="bg-green-100 text-green-800 flex-shrink-0"
                     >
                       Verified
                     </Badge>
                   </div>
 
-                  <div className="flex items-center space-x-4 mb-3">
+                  <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 mb-3">
                     <div className="flex items-center">
                       <div className="flex text-yellow-400 mr-1">
                         {[...Array(5)].map((_, i) => (
@@ -257,32 +267,35 @@ export default function VendorStorefront() {
                     </div>
                   </div>
 
-                  <p className="text-gray-600 mb-4">{vendorData.description}</p>
+                  <p className="text-gray-600 mb-4 text-sm sm:text-base">{vendorData.description}</p>
 
-
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 text-sm text-gray-600">
                     <div className="flex items-center">
-                      <MapPin className="w-4 h-4 mr-2" />
-                      {vendorData.location}
+                      <MapPin className="w-4 h-4 mr-2 flex-shrink-0" />
+                      <span className="truncate">{vendorData.location}</span>
                     </div>
-                    <div className="flex items-center">
-                      <Phone className="w-4 h-4 mr-2" />
-                      {vendorData.phone}
-                    </div>
-                    <div className="flex items-center">
-                      <Mail className="w-4 h-4 mr-2" />
-                      {vendorData.email}
-                    </div>
+                    {vendorData.phone && (
+                      <div className="flex items-center">
+                        <Phone className="w-4 h-4 mr-2 flex-shrink-0" />
+                        <span className="truncate">{vendorData.phone}</span>
+                      </div>
+                    )}
+                    {vendorData.email && (
+                      <div className="flex items-center">
+                        <Mail className="w-4 h-4 mr-2 flex-shrink-0" />
+                        <span className="truncate">{vendorData.email}</span>
+                      </div>
+                    )}
                   </div>
                 </div>
 
-                <div className="flex flex-col space-y-2">
+                <div className="flex flex-row sm:flex-col space-x-2 sm:space-x-0 sm:space-y-2 flex-shrink-0">
                   <button 
                     onClick={() => setIsFollowing(!isFollowing)}
-                    className={`flex justify-center items-center px-4 py-2 rounded-lg shadow hover:shadow-lg transition-all ${
+                    className={`flex justify-center items-center px-4 py-2 rounded-lg shadow hover:shadow-lg transition-all text-sm font-medium ${
                       isFollowing 
                         ? "bg-gray-600 hover:bg-gray-700 text-white" 
-                        : "bg-gradient-to-r from-purple-600 to-blue-600 hover:bg-purple-700 text-white"
+                        : "bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white"
                     }`}
                   >
                     <Heart className={`w-4 h-4 mr-2 ${isFollowing ? "fill-current" : ""}`} />
@@ -290,7 +303,7 @@ export default function VendorStorefront() {
                   </button>
                   <Button
                     variant="outline"
-                    className="flex items-center justify-center bg-white text-gray-800 hover:bg-gray-100 border border-gray-300 px-4 py-2 rounded-lg shadow hover:shadow-md transition-shadow"
+                    className="flex items-center justify-center bg-white text-gray-800 hover:bg-gray-100 border border-gray-300 px-4 py-2 rounded-lg shadow hover:shadow-md transition-shadow text-sm"
                   >
                     <Share2 className="w-4 h-4 mr-2" />
                     Share Store
@@ -300,6 +313,7 @@ export default function VendorStorefront() {
             </div>
           </div>
         </div>
+      </div>
 
       {/* <div className="relative h-80 overflow-hidden">
         <img src={vendorData.banner || "/placeholder.svg"} alt="Vendor banner" className="w-full h-full object-cover" />
