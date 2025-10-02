@@ -27,6 +27,7 @@ import Complaints from "./pages/dashboard/admin/complaints/Complaints";
 import ComplaintDetail from "./pages/dashboard/admin/complaints/ComplaintDetail";
 import StoreSetup from "./pages/StoreSetup";
 import StoreSetupDemo from "./pages/StoreSetupDemo";
+import BecomeSeller from "./pages/BecomeSeller";
 import StoreProfile from "./pages/dashboard/sellers/store profile/StoreProfile";
 import SellerNotification from "./pages/dashboard/sellers/notifications/SellerNotification";
 
@@ -108,6 +109,7 @@ class App extends React.Component {
               <Route path="login" element={<Login />} />
               <Route path="signup" element={<SignUp />} />
               <Route path="location" element={<NearbyUser />} />
+              <Route path="become-seller" element={<BecomeSeller />} />
             </Route>
           </Routes>
         </BrowserRouter>

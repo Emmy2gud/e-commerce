@@ -127,7 +127,8 @@ const ProfileHeader = () => {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="flex flex-col items-center border border-gray-300  py-3 h-auto"
+                    className="flex flex-col items-center border border-gray-300  py-3 h-auto "
+                    
                   >
                     <Mail className="w-4 h-4 mb-1 " />
                     <span className="text-xs">Message</span>
