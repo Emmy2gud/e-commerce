@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Bell, Store, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { Link } from "react-router-dom";
+import EnhancedNotificationsPanel from "./ui/EnhancedNotificationsPanel";
 
 export const Header = () => (
   <div className="flex-1">
@@ -30,12 +31,7 @@ export const Header = () => (
             className="pl-10 pr-4 py-2 w-48 lg:w-64 rounded-lg bg-gray-100 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
           />
         </div>
-        <Button size="sm" className="relative text-black hover:bg-violet-500 hover:text-white">
-          <Bell className="h-4 w-4 lg:h-5 lg:w-5" />
-          <span className="absolute -top-1 -right-1 h-3 w-3 lg:h-4 lg:w-4 bg-violet-600 rounded-full text-xs text-white flex items-center justify-center">
-            3
-          </span>
-        </Button>
+        <EnhancedNotificationsPanel />
         <Avatar className="h-8 w-8 lg:h-10 lg:w-10">
           <AvatarImage src="/diverse-user-avatars.png" />
           <AvatarFallback>JD</AvatarFallback>

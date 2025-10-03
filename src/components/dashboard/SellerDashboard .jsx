@@ -5,6 +5,9 @@ import { QuickActions } from "./ui/QuickActions ";
 import { RecentOrders } from "./ui/RecentOrders";
 import { InventoryStatus } from "./ui/InventoryStatus";
 import { RecentSales } from "./ui/RecentSales";
+import CustomerInteractionHub from "./ui/CustomerInteractionHub";
+import RevenueAnalyticsWidget from "./ui/RevenueAnalyticsWidget";
+
 
 export const SellerDashboard = ({ salesData }) => {
   const recentOrders = [
@@ -82,9 +85,15 @@ export const SellerDashboard = ({ salesData }) => {
         />
       </div>
 
+      {/* Enhanced Analytics and Customer Management */}
+      <div className="grid gap-4 md:gap-6 grid-cols-1">
+        <RevenueAnalyticsWidget/>
+        <CustomerInteractionHub />
+      </div>
+
       <div className="grid gap-4 md:gap-6 grid-cols-1 lg:grid-cols-3">
         <SalesPerformanceChart data={salesData} />
-        <QuickActions />
+        <QuickActions /> 
       </div>
 
       <div className="grid gap-4 md:gap-6 grid-cols-1 lg:grid-cols-2">

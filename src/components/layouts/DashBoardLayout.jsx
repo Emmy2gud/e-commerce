@@ -117,7 +117,7 @@ const sellerNav = [
     title: 'Orders',
     url: '#',
     icon: <ShoppingBag />,
-    items: [{ title: 'All Orders', url: '/orders' }],
+    items: [{ title: 'All Orders', url: 'orders' }],
   },
   {
     title: 'Store Profile',
